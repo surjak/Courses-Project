@@ -8,15 +8,52 @@ import { map, tap, take, exhaustMap } from "rxjs/operators";
 })
 export class CourseService {
   coursesChanged = new Subject<ICourse[]>();
-  courses: ICourse[];
+  courses: ICourse[] = [
+    {
+      name: "Matma",
+      ects: 1,
+      description: "fajny kurs",
+      formOfCourse: "Lecture",
+      grade: 3,
+      imageUrl: "https://cokolwiek4.pl",
+      semester: 1,
+      tutors: []
+    },
+    {
+      name: "Fizyka",
+      ects: 1,
+      description: "fajny kurs",
+      formOfCourse: "Lecture",
+      grade: 3,
+      imageUrl: "https://cokolwiek3.pl",
+      semester: 1,
+      tutors: []
+    },
+    {
+      name: "Aolikacje Internetowe",
+      ects: 1,
+      description: "fajny kurs",
+      formOfCourse: "Lecture",
+      grade: 3,
+      imageUrl: "https://cokolwiek2.pl",
+      semester: 1,
+      tutors: []
+    },
+    {
+      name: "PO",
+      ects: 1,
+      description: "fajny kurs",
+      formOfCourse: "Lecture",
+      grade: 3,
+      imageUrl: "https://cokolwiek1.pl",
+      semester: 1,
+      tutors: []
+    }
+  ];
 
   constructor(private http: HttpClient) {}
 
   getCourses() {
-    return this.http.get<ICourse[]>("./assets/courses.mock.json").pipe(
-      tap(data => {
-        this.courses = data;
-      })
-    );
+    return this.courses.slice();
   }
 }
