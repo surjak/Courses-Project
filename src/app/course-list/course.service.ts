@@ -15,7 +15,8 @@ export class CourseService {
       description: "fajny kurs",
       formOfCourse: "Lecture",
       grade: 3,
-      imageUrl: "https://cokolwiek4.pl",
+      imageUrl:
+        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
       tutors: []
     },
@@ -25,7 +26,8 @@ export class CourseService {
       description: "fajny kurs",
       formOfCourse: "Lecture",
       grade: 3,
-      imageUrl: "https://cokolwiek3.pl",
+      imageUrl:
+        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
       tutors: []
     },
@@ -35,7 +37,8 @@ export class CourseService {
       description: "fajny kurs",
       formOfCourse: "Lecture",
       grade: 3,
-      imageUrl: "https://cokolwiek2.pl",
+      imageUrl:
+        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
       tutors: []
     },
@@ -45,7 +48,8 @@ export class CourseService {
       description: "fajny kurs",
       formOfCourse: "Lecture",
       grade: 3,
-      imageUrl: "https://cokolwiek1.pl",
+      imageUrl:
+        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
       tutors: []
     }
