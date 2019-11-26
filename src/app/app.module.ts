@@ -5,9 +5,15 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CourseListComponent } from "./course-list/course-list.component";
 import { CourseComponent } from "./course-list/course/course.component";
+import { NavbarComponent } from "./navbar/navbar.component";
 
 @NgModule({
-  declarations: [AppComponent, CourseListComponent, CourseComponent],
+  declarations: [
+    AppComponent,
+    CourseListComponent,
+    CourseComponent,
+    NavbarComponent
+  ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent]
