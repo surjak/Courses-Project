@@ -18,6 +18,7 @@ export class CourseService {
       grade: 3,
       imageUrl:
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
+
       semester: 1,
       tutors: []
     },
