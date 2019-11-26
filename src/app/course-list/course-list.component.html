@@ -1,9 +1,15 @@
-<div class="row ">
-  <app-course
-    class="col-3  mx-auto mt-4"
-    *ngFor="let course of courses; let i = index"
-    [id]="i"
-    [imageUrl]="course.imageUrl"
-    [name]="course.name"
-  ></app-course>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row ">
+        <app-course
+          class="col-3  mx-auto mt-4"
+          *ngFor="let course of courses; let i = index"
+          [id]="i"
+          [imageUrl]="course.imageUrl"
+          [name]="course.name"
+        ></app-course>
+      </div>
+    </div>
+  </div>
 </div>

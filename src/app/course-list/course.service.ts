@@ -10,6 +10,7 @@ export class CourseService {
   coursesChanged = new Subject<ICourse[]>();
   courses: ICourse[] = [
     {
+      _id: "0",
       name: "Matma",
       ects: 1,
       description: "fajny kurs",
@@ -21,6 +22,7 @@ export class CourseService {
       tutors: []
     },
     {
+      _id: "1",
       name: "Fizyka",
       ects: 1,
       description: "fajny kurs",
@@ -32,6 +34,7 @@ export class CourseService {
       tutors: []
     },
     {
+      _id: "2",
       name: "Aolikacje Internetowe",
       ects: 1,
       description: "fajny kurs",
@@ -43,6 +46,7 @@ export class CourseService {
       tutors: []
     },
     {
+      _id: "3",
       name: "PO",
       ects: 1,
       description: "fajny kurs",
@@ -56,6 +60,10 @@ export class CourseService {
   ];
 
   constructor(private http: HttpClient) {}
+
+  getCourse<ICourse>(id: string) {
+    return this.courses.filter(c => c._id === id)[0];
+  }
 
   getCourses() {
     return this.courses.slice();

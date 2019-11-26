@@ -2,6 +2,7 @@ import { ITutor } from "./itutor.model";
 import { IComment } from "./icomment.model";
 
 export interface ICourse {
+  _id: string;
   name: string;
   ects: Number;
   semester: Number;

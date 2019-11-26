@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from "@angular/core";
   styleUrls: ["./course.component.css"]
 })
 export class CourseComponent implements OnInit {
-  @Input() id: Number;
+  @Input() id: string;
   @Input() imageUrl: string;
   @Input() name: string;
   constructor() {}

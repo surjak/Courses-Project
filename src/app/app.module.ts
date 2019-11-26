@@ -6,13 +6,15 @@ import { AppComponent } from "./app.component";
 import { CourseListComponent } from "./course-list/course-list.component";
 import { CourseComponent } from "./course-list/course/course.component";
 import { NavbarComponent } from "./navbar/navbar.component";
+import { CourseDetailsComponent } from './course-list/course-details/course-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseListComponent,
     CourseComponent,
-    NavbarComponent
+    NavbarComponent,
+    CourseDetailsComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],

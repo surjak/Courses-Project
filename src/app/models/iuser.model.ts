@@ -1,6 +1,7 @@
 export interface IUser {
   email: string;
-  id: string;
+  _id: string;
   _token: string;
   tutor: boolean;
+  admin: boolean;
 }

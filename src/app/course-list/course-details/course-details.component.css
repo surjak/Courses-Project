@@ -1,0 +1,17 @@
+.jumbotron {
+  background-size: cover;
+  background-color: rgb(199, 199, 199);
+  background-position: center;
+  background-blend-mode: luminosity;
+}
+.jumbotron .container h1 {
+  color: white;
+  text-shadow: 3px 4px 22px rgba(222, 228, 228, 0.671);
+  font-weight: 300;
+}
+.jumbotron .container p {
+  color: white;
+  font-size: 1.3rem;
+  text-shadow: 3px 4px 22px rgba(222, 228, 228, 0.767);
+  font-weight: 400;
+}
