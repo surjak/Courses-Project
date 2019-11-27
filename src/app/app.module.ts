@@ -6,17 +6,19 @@ import { AppComponent } from "./app.component";
 import { CourseListComponent } from "./course-list/course-list.component";
 import { CourseComponent } from "./course-list/course/course.component";
 import { NavbarComponent } from "./navbar/navbar.component";
-import { CourseDetailsComponent } from './course-list/course-details/course-details.component';
-
+import { CourseDetailsComponent } from "./course-list/course-details/course-details.component";
+import { FilterPipe } from "./shared/filter.pipe";
+import { FormsModule } from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
     CourseListComponent,
     CourseComponent,
     NavbarComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
+    FilterPipe
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })
