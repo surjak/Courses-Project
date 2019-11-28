@@ -9,6 +9,10 @@ import { NavbarComponent } from "./navbar/navbar.component";
 import { CourseDetailsComponent } from "./course-list/course-details/course-details.component";
 import { FilterPipe } from "./shared/filter.pipe";
 import { FormsModule } from "@angular/forms";
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AddCourseComponent } from './admin-panel/add-course/add-course.component';
+import { EditCourseComponent } from './admin-panel/edit-course/edit-course.component';
+import { RemoveCourseComponent } from './admin-panel/remove-course/remove-course.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +20,11 @@ import { FormsModule } from "@angular/forms";
     CourseComponent,
     NavbarComponent,
     CourseDetailsComponent,
-    FilterPipe
+    FilterPipe,
+    AdminPanelComponent,
+    AddCourseComponent,
+    EditCourseComponent,
+    RemoveCourseComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],

@@ -1,16 +1,23 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="row ">
-        <app-course
-          class="col-3  mx-auto mt-4"
-          *ngFor="let course of courses | filter: searchText"
-          [id]="course._id"
-          [imageUrl]="course.imageUrl"
-          [name]="course.name"
-        ></app-course>
-      </div>
+<div class="container mt-5">
+  <div class="row ">
+    <div class="col-6 offset-3 mt-4">
+      <input
+        [(ngModel)]="searchText"
+        placeholder="Search for courses"
+        class="form-control"
+      />
     </div>
   </div>
 </div>
-<input [(ngModel)]="searchText" placeholder="search text goes here" />
+
+<div class="container mt-2">
+  <div class="row ">
+    <app-course
+      class="col-3 mt-4"
+      *ngFor="let course of courses | filter: searchText"
+      [id]="course._id"
+      [imageUrl]="course.imageUrl"
+      [name]="course.name"
+    ></app-course>
+  </div>
+</div>

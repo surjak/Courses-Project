@@ -2,10 +2,11 @@
   <img src="{{ imageUrl }}" class="card-img-top" />
   <div class="card-body">
     <h5 class="card-title">{{ name }}</h5>
-    <p class="card-text">
-      Some quick example text to build on the card title and make up the bulk of
-      the card's content.
-    </p>
-    <a routerLink="{{ id }}" class="btn btn-primary">See details</a>
+    <div class="mt-3">
+      <a routerLink="{{ id }}" class="btn btn-primary">See details</a>
+      <a class="btn btn-outline-secondary ml-2" style="cursor: pointer;"
+        >Join Course</a
+      >
+    </div>
   </div>
 </div>
