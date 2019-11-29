@@ -7,7 +7,10 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ["./admin-panel.component.css"]
 })
 export class AdminPanelComponent implements OnInit {
+  selected: boolean;
   constructor(private router: Router, private route: ActivatedRoute) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.selected = false;
+  }
 }

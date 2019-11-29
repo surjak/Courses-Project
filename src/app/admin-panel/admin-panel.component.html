@@ -3,18 +3,41 @@
     <div class="col-3 mt-5">
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link" routerLink="add-course">Add Course</a>
+          <a class="nav-link" (click)="selected = true" routerLink="add-course"
+            >Add Course</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="edit-course">Edit Course</a>
+          <a class="nav-link" (click)="selected = true" routerLink="edit-course"
+            >Edit Course</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="remove-course">Remove Course</a>
+          <a
+            class="nav-link"
+            (click)="selected = true"
+            routerLink="remove-course"
+            >Remove Course</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="selected = true" routerLink="add-teacher"
+            >Add Teacher</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            (click)="selected = true"
+            routerLink="remove-teacher"
+            >Remove Teacher</a
+          >
         </li>
       </ul>
     </div>
     <div class="col-9 mt-5">
-      <router-outlet></router-outlet>
+      <p *ngIf="!selected" class="lead display-2">Choose an option</p>
+      <router-outlet *ngIf="selected"></router-outlet>
     </div>
   </div>
 </div>

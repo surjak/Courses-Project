@@ -13,6 +13,10 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AddCourseComponent } from './admin-panel/add-course/add-course.component';
 import { EditCourseComponent } from './admin-panel/edit-course/edit-course.component';
 import { RemoveCourseComponent } from './admin-panel/remove-course/remove-course.component';
+import { AddTeacherComponent } from './add-teacher/add-teacher.component';
+import { TeacherListComponent } from './teacher-list/teacher-list.component';
+import { TeacherComponent } from './teacher-list/teacher/teacher.component';
+import { EditCourseItemComponent } from './admin-panel/edit-course/edit-course-item/edit-course-item.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +28,11 @@ import { RemoveCourseComponent } from './admin-panel/remove-course/remove-course
     AdminPanelComponent,
     AddCourseComponent,
     EditCourseComponent,
-    RemoveCourseComponent
+    RemoveCourseComponent,
+    AddTeacherComponent,
+    TeacherListComponent,
+    TeacherComponent,
+    EditCourseItemComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
