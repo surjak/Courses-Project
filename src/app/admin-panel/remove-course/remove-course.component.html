@@ -1,1 +1,16 @@
-<p>remove-course works!</p>
+<div class="scrollbar scrollbar-primary">
+  <div class="force-overflow">
+    <ul class="list-group">
+      <li
+        *ngFor="let course of courses"
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        {{ course.name }} | {{ course.formOfCourse }} on semester
+        {{ course.semester }}
+        <button class="btn btn-danger" (click)="onRemoveCourse(course._id)">
+          Remove
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

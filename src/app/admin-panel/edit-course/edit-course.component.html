@@ -1,2 +1,14 @@
-<p>Wosks</p>
-<a routerLink="1">aaa</a>
+<div class="scrollbar scrollbar-primary">
+  <div class="force-overflow">
+    <ul class="list-group">
+      <li
+        *ngFor="let course of courses"
+        class="list-group-item"
+        routerLink="{{ course._id }}"
+      >
+        {{ course.name }} | {{ course.formOfCourse }} on semester
+        {{ course.semester }}
+      </li>
+    </ul>
+  </div>
+</div>

@@ -19,6 +19,13 @@ export class CourseService {
   getCourses() {
     return this.courses.slice();
   }
+  removeCourse(id: string) {
+    let c = this.courses.find(c => c._id === id);
+    let index = this.courses.indexOf(c);
+    this.courses.splice(index, 1);
+    this.coursesChanged.next(this.courses.slice());
+    console.log(this.courses);
+  }
 }
 
 export class Courses {
@@ -73,7 +80,7 @@ export class Courses {
       tutors: []
     },
     {
-      _id: "0",
+      _id: "4",
       name: "Matma",
       ects: 1,
       description: "fajny kurs",
@@ -86,7 +93,7 @@ export class Courses {
       tutors: []
     },
     {
-      _id: "1",
+      _id: "5",
       name: "Fizyka",
       ects: 1,
       description: "fajny kurs",
@@ -98,7 +105,7 @@ export class Courses {
       tutors: []
     },
     {
-      _id: "2",
+      _id: "6",
       name: "Aolikacje Internetowe",
       ects: 1,
       description: "fajny kurs",
@@ -110,7 +117,7 @@ export class Courses {
       tutors: []
     },
     {
-      _id: "3",
+      _id: "7",
       name: "PO",
       ects: 1,
       description: "fajny kurs",
@@ -122,7 +129,7 @@ export class Courses {
       tutors: []
     },
     {
-      _id: "0",
+      _id: "8",
       name: "Matma",
       ects: 1,
       description: "fajny kurs",
@@ -135,7 +142,7 @@ export class Courses {
       tutors: []
     },
     {
-      _id: "1",
+      _id: "9",
       name: "Fizyka",
       ects: 1,
       description: "fajny kurs",
@@ -147,7 +154,7 @@ export class Courses {
       tutors: []
     },
     {
-      _id: "2",
+      _id: "10",
       name: "Aolikacje Internetowe",
       ects: 1,
       description: "fajny kurs",
@@ -159,7 +166,7 @@ export class Courses {
       tutors: []
     },
     {
-      _id: "3",
+      _id: "11",
       name: "PO",
       ects: 1,
       description: "fajny kurs",
