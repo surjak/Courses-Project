@@ -41,6 +41,7 @@ export class Courses {
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
 
       semester: 1,
+      max: 1,
       tutors: []
     },
     {
@@ -53,6 +54,7 @@ export class Courses {
       imageUrl:
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
+      max: 1,
       tutors: []
     },
     {
@@ -65,6 +67,7 @@ export class Courses {
       imageUrl:
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
+      max: 1,
       tutors: []
     },
     {
@@ -77,6 +80,7 @@ export class Courses {
       imageUrl:
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
+      max: 1,
       tutors: []
     },
     {
@@ -90,6 +94,7 @@ export class Courses {
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
 
       semester: 1,
+      max: 1,
       tutors: []
     },
     {
@@ -102,6 +107,7 @@ export class Courses {
       imageUrl:
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
+      max: 1,
       tutors: []
     },
     {
@@ -114,6 +120,7 @@ export class Courses {
       imageUrl:
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
+      max: 1,
       tutors: []
     },
     {
@@ -126,6 +133,7 @@ export class Courses {
       imageUrl:
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
+      max: 1,
       tutors: []
     },
     {
@@ -139,6 +147,7 @@ export class Courses {
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
 
       semester: 1,
+      max: 1,
       tutors: []
     },
     {
@@ -151,6 +160,7 @@ export class Courses {
       imageUrl:
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
+      max: 1,
       tutors: []
     },
     {
@@ -163,6 +173,7 @@ export class Courses {
       imageUrl:
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
+      max: 1,
       tutors: []
     },
     {
@@ -175,6 +186,7 @@ export class Courses {
       imageUrl:
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
+      max: 1,
       tutors: []
     }
   ];

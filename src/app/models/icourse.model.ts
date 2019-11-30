@@ -11,5 +11,6 @@ export interface ICourse {
   imageUrl: string;
   description: string;
   tutors: ITutor[];
+  max: Number;
   comments?: IComment[];
 }
