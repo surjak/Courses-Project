@@ -25,6 +25,7 @@ const routes: Routes = [
     path: "courses/:id",
     component: CourseDetailsComponent
   },
+  { path: "teachers", component: TeacherListComponent },
   {
     path: "admin-panel",
     component: AdminPanelComponent,

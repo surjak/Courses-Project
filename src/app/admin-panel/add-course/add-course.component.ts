@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { FormGroup, FormArray, FormControl, Validators } from "@angular/forms";
 import { ITutor } from "src/app/models/itutor.model";
+import { TeachersService } from "src/app/teacher-list/teachers.service";
 
 @Component({
   selector: "app-add-course",
@@ -10,7 +11,9 @@ import { ITutor } from "src/app/models/itutor.model";
 })
 export class AddCourseComponent implements OnInit {
   courseForm: FormGroup;
-  constructor() {}
+  teachers: ITutor[];
+  courseTeachers = [];
+  constructor(private teacherService: TeachersService) {}
 
   private initForm() {
     let name: string;
@@ -34,11 +37,29 @@ export class AddCourseComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.teachers = this.teacherService.getTeachers();
   }
   onSubmit() {
     console.log("Hello");
   }
   onCancel() {
     console.log("cencel");
+  }
+  addTeacher(e, id: string) {
+    let flag = false;
+    e.target.classList.forEach(c => {
+      if (c == "active") {
+        console.log("active was");
+        flag = true;
+        e.target.classList.toggle("active");
+        this.courseTeachers = this.courseTeachers.filter(e => e != id);
+        console.log(this.courseTeachers);
+      }
+    });
+    if (!flag) {
+      e.target.classList.toggle("active");
+      this.courseTeachers.push(id);
+      console.log(this.courseTeachers);
+    }
   }
 }

@@ -57,6 +57,26 @@
     <label for="max">Max Students</label>
     <input type="number" id="max" formControlName="max" class="form-control" />
   </div>
+  <div class="form-group">
+    <label for="teachers">Select Teachers</label>
+    <ul class="list-group">
+      <li
+        *ngFor="let teacher of teachers"
+        class="list-group-item d-flex  align-items-center "
+        [ngClass]="{ active: toggle }"
+        (click)="addTeacher($event, teacher._id)"
+        style="cursor: pointer;"
+      >
+        <img
+          src="{{ teacher.imageUrl }}"
+          alt=""
+          class="img-responsive mr-3"
+          style="max-height: 70px; border-radius: 2px;"
+        />{{ teacher.name }}
+        {{ teacher.surname }}
+      </li>
+    </ul>
+  </div>
   <button class="btn btn-success" type="submit" [disabled]="!courseForm.valid">
     Add
   </button>
