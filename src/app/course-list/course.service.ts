@@ -32,6 +32,14 @@ export class CourseService {
     console.log(this.courses);
   }
 
+  removeTeacherFromAllCourses(id: string) {
+    this.courses.forEach(course => {
+      let teachets = course.tutors.filter(t => t._id != id);
+      course.tutors = teachets;
+    });
+    console.log(this.courses);
+  }
+
   addCourse(
     name: string,
     ects: Number,

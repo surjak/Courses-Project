@@ -1,1 +1,58 @@
-<p>add-teacher works!</p>
+<form [formGroup]="teacherForm" class="mb-4" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="surname">Surname</label>
+    <input
+      type="text"
+      id="surname"
+      formControlName="surname"
+      class="form-control"
+    />
+  </div>
+  <div class="form-group">
+    <label for="imageUrl">Image URL</label>
+    <input
+      type="text"
+      id="imageUrl"
+      formControlName="imageUrl"
+      class="form-control"
+    />
+  </div>
+  <div class="form-group">
+    <label for="telephone">Telephone</label>
+    <input
+      type="text"
+      id="telephone"
+      formControlName="telephone"
+      class="form-control"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="mail">Mail</label>
+    <input type="text" id="mail" formControlName="mail" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="personalPage">Personal Page</label>
+    <input
+      type="text"
+      id="personalPage"
+      formControlName="personalPage"
+      class="form-control"
+    />
+  </div>
+
+  <button
+    class="btn btn-success px-3"
+    type="submit"
+    [disabled]="!teacherForm.valid"
+  >
+    Add
+  </button>
+  <button class="btn btn-danger ml-3" type="button" (click)="onCancel()">
+    Cancel
+  </button>
+</form>

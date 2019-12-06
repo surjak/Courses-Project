@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ITutor } from "../models/itutor.model";
 import { Subject } from "rxjs";
+import { CourseService } from "../course-list/course.service";
 
 @Injectable({
   providedIn: "root"
@@ -54,5 +55,34 @@ export class TeachersService {
       });
     });
     return teachersList;
+  }
+  removeTeacher(id: string) {
+    let c = this.teachers.find(c => c._id === id);
+    let index = this.teachers.indexOf(c);
+    this.teachers.splice(index, 1);
+    this.teachersChanged.next(this.teachers.slice());
+    console.log(this.teachers);
+  }
+
+  addTeacher(
+    name: string,
+    surname: string,
+    imageUrl: string,
+    telephone: string,
+    mail: string,
+    personalPage: string
+  ) {
+    let teacher: ITutor = {
+      _id: (this.teachers.length + 1).toString(),
+      imageUrl: imageUrl,
+      mail: mail,
+      name: name,
+      personalPage: personalPage,
+      surname: surname,
+      telephone: telephone
+    };
+    this.teachers.push(teacher);
+    this.teachersChanged.next(this.teachers);
+    console.log(this.teachers);
   }
 }

@@ -1,1 +1,21 @@
-<p>remove-teacher works!</p>
+<div class="scrollbar scrollbar-primary">
+  <div class="force-overflow">
+    <ul class="list-group">
+      <li
+        *ngFor="let teacher of teachers"
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <img
+          src="{{ teacher.imageUrl }}"
+          class="img-responsive mr-3"
+          style="max-height: 70px; border-radius: 2px; max-width:70px;"
+          alt=""
+        />
+        <p class="lead my-0">{{ teacher.name }} {{ teacher.surname }}</p>
+        <button class="btn btn-danger" (click)="onRemoveTeacher(teacher._id)">
+          Remove
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
