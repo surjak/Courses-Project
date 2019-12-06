@@ -1,3 +1,12 @@
 <div class="container">
-  <div class="row mt-5"><p>teacher-list works!</p></div>
+  <div class="row mt-5"></div>
+</div>
+<div class="container mt-2 mb-5">
+  <div class="row text-center ">
+    <app-teacher
+      class="col-4 mt-4"
+      *ngFor="let teacher of teachers"
+      [teacher]="teacher"
+    ></app-teacher>
+  </div>
 </div>

@@ -18,6 +18,7 @@ import { TeacherListComponent } from "./teacher-list/teacher-list.component";
 import { TeacherComponent } from "./teacher-list/teacher/teacher.component";
 import { EditCourseItemComponent } from "./admin-panel/edit-course/edit-course-item/edit-course-item.component";
 import { RemoveTeacherComponent } from './remove-teacher/remove-teacher.component';
+import { TeacherDetailsComponent } from './teacher-list/teacher-details/teacher-details.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { RemoveTeacherComponent } from './remove-teacher/remove-teacher.componen
     TeacherListComponent,
     TeacherComponent,
     EditCourseItemComponent,
-    RemoveTeacherComponent
+    RemoveTeacherComponent,
+    TeacherDetailsComponent
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,7 @@ import { AddTeacherComponent } from "./add-teacher/add-teacher.component";
 import { TeacherListComponent } from "./teacher-list/teacher-list.component";
 import { EditCourseItemComponent } from "./admin-panel/edit-course/edit-course-item/edit-course-item.component";
 import { RemoveTeacherComponent } from "./remove-teacher/remove-teacher.component";
+import { TeacherDetailsComponent } from "./teacher-list/teacher-details/teacher-details.component";
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
     component: CourseDetailsComponent
   },
   { path: "teachers", component: TeacherListComponent },
+  { path: "teachers/:id", component: TeacherDetailsComponent },
   {
     path: "admin-panel",
     component: AdminPanelComponent,
