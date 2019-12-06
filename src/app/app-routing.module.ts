@@ -11,6 +11,7 @@ import { TeacherListComponent } from "./teacher-list/teacher-list.component";
 import { EditCourseItemComponent } from "./admin-panel/edit-course/edit-course-item/edit-course-item.component";
 import { RemoveTeacherComponent } from "./remove-teacher/remove-teacher.component";
 import { TeacherDetailsComponent } from "./teacher-list/teacher-details/teacher-details.component";
+import { MyCoursesComponent } from "./my-courses/my-courses.component";
 
 const routes: Routes = [
   {
@@ -29,6 +30,8 @@ const routes: Routes = [
   },
   { path: "teachers", component: TeacherListComponent },
   { path: "teachers/:id", component: TeacherDetailsComponent },
+  { path: "mycourses", component: MyCoursesComponent },
+
   {
     path: "admin-panel",
     component: AdminPanelComponent,

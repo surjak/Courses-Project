@@ -4,7 +4,10 @@
     <h5 class="card-title">{{ name }}</h5>
     <div class="mt-3">
       <a routerLink="{{ id }}" class="btn btn-primary">See details</a>
-      <a class="btn btn-outline-secondary ml-2" style="cursor: pointer;"
+      <a
+        class="btn btn-outline-secondary ml-2"
+        (click)="joinCourse()"
+        style="cursor: pointer;"
         >Join Course</a
       >
     </div>

@@ -1,0 +1,9 @@
+<div class="container mt-5 mb-5">
+  <div class="row pt-4 ">
+    <app-my-course-item
+      class="col-3 mt-4"
+      *ngFor="let course of courses"
+      [course]="course"
+    ></app-my-course-item>
+  </div>
+</div>
