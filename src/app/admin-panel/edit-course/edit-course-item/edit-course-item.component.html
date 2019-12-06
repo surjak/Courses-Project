@@ -1,1 +1,90 @@
-<p class="lead">{{ course._id }}{{ course.name }}</p>
+<form [formGroup]="courseForm" class="mb-4" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" id="name" formControlName="name" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="ects">ECTS</label>
+    <input
+      type="number"
+      id="ects"
+      formControlName="ects"
+      class="form-control"
+    />
+  </div>
+  <div class="form-group">
+    <label for="semester">Semester</label>
+    <input
+      type="number"
+      id="semester"
+      formControlName="semester"
+      class="form-control"
+    />
+  </div>
+  <div class="form-group">
+    <label for="formOfCourse">Form of Course</label>
+    <input
+      type="text"
+      id="formOfCourse"
+      formControlName="formOfCourse"
+      class="form-control"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="imageUrl">Image URL</label>
+    <input
+      type="text"
+      id="imageUrl"
+      formControlName="imageUrl"
+      class="form-control"
+      #imageUrl
+    />
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea
+      type="text"
+      id="description"
+      formControlName="description"
+      class="form-control"
+      rows="6"
+    ></textarea>
+  </div>
+  <!-- aaa -->
+  <!-- /aaa -->
+  <div class="form-group">
+    <label for="max">Max Students</label>
+    <input type="number" id="max" formControlName="max" class="form-control" />
+  </div>
+  <div class="form-group">
+    <label for="teachers">Select Teachers</label>
+    <ul class="list-group">
+      <li
+        *ngFor="let teacher of teachers"
+        class="list-group-item d-flex  align-items-center teacherItem"
+        (click)="addTeacher($event, teacher._id)"
+        style="cursor: pointer;"
+        [ngClass]="{ active: teacher.selected }"
+      >
+        <img
+          src="{{ teacher.imageUrl }}"
+          alt=""
+          class="img-responsive mr-3"
+          style="max-height: 70px; border-radius: 2px; max-width:70px;"
+        />{{ teacher.name }}
+        {{ teacher.surname }}
+      </li>
+    </ul>
+  </div>
+  <button
+    class="btn btn-success px-3"
+    type="submit"
+    [disabled]="!courseForm.valid || courseTeachers.length == 0"
+  >
+    Add
+  </button>
+  <button class="btn btn-danger ml-3" type="button" (click)="onCancel()">
+    Cancel
+  </button>
+</form>

@@ -63,7 +63,6 @@
       <li
         *ngFor="let teacher of teachers"
         class="list-group-item d-flex  align-items-center "
-        [ngClass]="{ active: toggle }"
         (click)="addTeacher($event, teacher._id)"
         style="cursor: pointer;"
       >

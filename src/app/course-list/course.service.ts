@@ -68,6 +68,32 @@ export class CourseService {
     this.courses.push(course);
     this.coursesChanged.next(this.courses);
   }
+
+  editCourse(
+    id: string,
+    name: string,
+    ects: Number,
+    semester: Number,
+    formOfCourse: string,
+    imageUrl: string,
+    description: string,
+    max: Number,
+    teachersID: any[]
+  ) {
+    let teacherList: ITutor[] = this.teacherService.getTeachersById(teachersID);
+    this.courses.map(course => {
+      if (course._id == id) {
+        course.name = name;
+        course.ects = ects;
+        course.semester = semester;
+        course.formOfCourse = formOfCourse;
+        course.imageUrl = imageUrl;
+        course.description = description;
+        course.max = max;
+        course.tutors = teacherList;
+      }
+    });
+  }
 }
 
 export class Courses {
@@ -84,7 +110,28 @@ export class Courses {
 
       semester: 1,
       max: 1,
-      tutors: []
+      tutors: [
+        {
+          _id: "1",
+          name: "Walter",
+          surname: "White",
+          imageUrl:
+            "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/35/1600x1600/square_ustv-breaking-bad-season-2-pictures-4.jpg?crop=0.874xw:0.874xh;0,0.126xh&resize=480:*",
+          mail: "ww@gmail.com",
+          personalPage: "www.google.com",
+          telephone: "123123123"
+        },
+        {
+          _id: "2",
+          name: "Walter",
+          surname: "White",
+          imageUrl:
+            "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/35/1600x1600/square_ustv-breaking-bad-season-2-pictures-4.jpg?crop=0.874xw:0.874xh;0,0.126xh&resize=480:*",
+          mail: "ww@gmail.com",
+          personalPage: "www.google.com",
+          telephone: "123123123"
+        }
+      ]
     },
     {
       _id: "1",
@@ -97,7 +144,28 @@ export class Courses {
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
       semester: 1,
       max: 1,
-      tutors: []
+      tutors: [
+        {
+          _id: "1",
+          name: "Walter",
+          surname: "White",
+          imageUrl:
+            "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/35/1600x1600/square_ustv-breaking-bad-season-2-pictures-4.jpg?crop=0.874xw:0.874xh;0,0.126xh&resize=480:*",
+          mail: "ww@gmail.com",
+          personalPage: "www.google.com",
+          telephone: "123123123"
+        },
+        {
+          _id: "2",
+          name: "Walter",
+          surname: "White",
+          imageUrl:
+            "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/35/1600x1600/square_ustv-breaking-bad-season-2-pictures-4.jpg?crop=0.874xw:0.874xh;0,0.126xh&resize=480:*",
+          mail: "ww@gmail.com",
+          personalPage: "www.google.com",
+          telephone: "123123123"
+        }
+      ]
     },
     {
       _id: "2",
