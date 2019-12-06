@@ -2,7 +2,9 @@ import { Injectable } from "@angular/core";
 import { ICourse } from "../models/icourse.model";
 import { HttpClient } from "@angular/common/http";
 import { Subject } from "rxjs";
-import { map, tap, take, exhaustMap } from "rxjs/operators";
+import { map, tap, take, exhaustMap, max } from "rxjs/operators";
+import { TeachersService } from "../teacher-list/teachers.service";
+import { ITutor } from "../models/itutor.model";
 @Injectable({
   providedIn: "root"
 })
@@ -10,7 +12,10 @@ export class CourseService {
   coursesChanged = new Subject<ICourse[]>();
   courses: ICourse[] = Courses.courses;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private teacherService: TeachersService
+  ) {}
 
   getCourse<ICourse>(id: string) {
     return this.courses.filter(c => c._id === id)[0];
@@ -25,6 +30,35 @@ export class CourseService {
     this.courses.splice(index, 1);
     this.coursesChanged.next(this.courses.slice());
     console.log(this.courses);
+  }
+
+  addCourse(
+    name: string,
+    ects: Number,
+    semester: Number,
+    formOfCourse: string,
+    imageUrl: string,
+    description: string,
+    max: Number,
+    teachersID: any[]
+  ) {
+    let teacherList: ITutor[] = this.teacherService.getTeachersById(teachersID);
+    let course: ICourse = {
+      _id: (this.courses.length + 1).toString(),
+      description: description,
+      ects: ects,
+      formOfCourse: formOfCourse,
+      grade: 0,
+      imageUrl: imageUrl,
+      max: max,
+      name: name,
+      semester: semester,
+      tutors: teacherList
+    };
+    console.log(course);
+
+    this.courses.push(course);
+    this.coursesChanged.next(this.courses);
   }
 }
 

@@ -1,4 +1,4 @@
-<form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="courseForm" class="mb-4" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="name">Name</label>
     <input type="text" id="name" formControlName="name" class="form-control" />
@@ -77,10 +77,14 @@
       </li>
     </ul>
   </div>
-  <button class="btn btn-success" type="submit" [disabled]="!courseForm.valid">
+  <button
+    class="btn btn-success px-3"
+    type="submit"
+    [disabled]="!courseForm.valid || courseTeachers.length == 0"
+  >
     Add
   </button>
-  <button class="btn btn-danger" type="button" (click)="onCancel()">
+  <button class="btn btn-danger ml-3" type="button" (click)="onCancel()">
     Cancel
   </button>
 </form>

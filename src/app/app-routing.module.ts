@@ -9,6 +9,7 @@ import { RemoveCourseComponent } from "./admin-panel/remove-course/remove-course
 import { AddTeacherComponent } from "./add-teacher/add-teacher.component";
 import { TeacherListComponent } from "./teacher-list/teacher-list.component";
 import { EditCourseItemComponent } from "./admin-panel/edit-course/edit-course-item/edit-course-item.component";
+import { RemoveTeacherComponent } from "./remove-teacher/remove-teacher.component";
 
 const routes: Routes = [
   {
@@ -40,7 +41,7 @@ const routes: Routes = [
       { path: "edit-course/:id", component: EditCourseItemComponent },
       { path: "remove-course", component: RemoveCourseComponent },
       { path: "add-teacher", component: AddTeacherComponent },
-      { path: "remove-teacher", component: TeacherListComponent }
+      { path: "remove-teacher", component: RemoveTeacherComponent }
     ]
   }
 ];

@@ -44,4 +44,15 @@ export class TeachersService {
   getTeachers() {
     return this.teachers.slice();
   }
+  getTeachersById(list: any[]) {
+    let teachersList: ITutor[] = [];
+    list.forEach(id => {
+      this.teachers.forEach(t => {
+        if (t._id == id) {
+          teachersList.push(t);
+        }
+      });
+    });
+    return teachersList;
+  }
 }
