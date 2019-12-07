@@ -12,6 +12,7 @@ import { EditCourseItemComponent } from "./admin-panel/edit-course/edit-course-i
 import { RemoveTeacherComponent } from "./remove-teacher/remove-teacher.component";
 import { TeacherDetailsComponent } from "./teacher-list/teacher-details/teacher-details.component";
 import { MyCoursesComponent } from "./my-courses/my-courses.component";
+import { AuthGuardService } from "./auth/auth-guard.service";
 
 const routes: Routes = [
   {
@@ -35,7 +36,7 @@ const routes: Routes = [
   {
     path: "admin-panel",
     component: AdminPanelComponent,
-
+    canActivate: [AuthGuardService],
     children: [
       { path: "add-course", component: AddCourseComponent },
       {
