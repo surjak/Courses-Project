@@ -14,6 +14,9 @@ import { TeacherDetailsComponent } from "./teacher-list/teacher-details/teacher-
 import { MyCoursesComponent } from "./my-courses/my-courses.component";
 import { AuthGuardService } from "./auth/auth-guard.service";
 import { OneCourseComponent } from "./my-courses/one-course/one-course.component";
+import { LoginComponent } from "./auth/login/login.component";
+import { SignupComponent } from "./auth/signup/signup.component";
+import { SignupAdminComponent } from "./auth/signup-admin/signup-admin.component";
 
 const routes: Routes = [
   {
@@ -51,7 +54,10 @@ const routes: Routes = [
       { path: "add-teacher", component: AddTeacherComponent },
       { path: "remove-teacher", component: RemoveTeacherComponent }
     ]
-  }
+  },
+  { path: "login", component: LoginComponent },
+  { path: "signup", component: SignupComponent },
+  { path: "signup-admin", component: SignupAdminComponent }
 ];
 
 @NgModule({

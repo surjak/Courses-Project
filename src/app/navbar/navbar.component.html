@@ -35,7 +35,7 @@
             >Admin Panel</a
           >
         </li>
-        <li class="nav-item dropdown" routerLinkActive="active">
+        <li *ngIf="!isAuth" class="nav-item dropdown" routerLinkActive="active">
           <a
             class="nav-link dropdown-toggle"
             id="navbarDropdown"
@@ -52,6 +52,11 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" routerLink="/signup">Sign Up</a>
           </div>
+        </li>
+        <li *ngIf="isAuth" class="nav-item" routerLinkActive="active">
+          <a class="nav-link" (click)="logout()" style="cursor: pointer;"
+            >Logout</a
+          >
         </li>
       </ul>
     </div>

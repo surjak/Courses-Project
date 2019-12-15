@@ -23,6 +23,9 @@ import { MyCoursesComponent } from "./my-courses/my-courses.component";
 
 import { MyCourseItemComponent } from "./my-courses/my-course-item/my-course-item.component";
 import { OneCourseComponent } from './my-courses/one-course/one-course.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
+import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,13 @@ import { OneCourseComponent } from './my-courses/one-course/one-course.component
 
     MyCourseItemComponent,
 
-    OneCourseComponent
+    OneCourseComponent,
+
+    SignupComponent,
+
+    LoginComponent,
+
+    SignupAdminComponent
   ],
   imports: [
     BrowserModule,

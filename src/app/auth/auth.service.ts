@@ -18,10 +18,16 @@ export class AuthService {
   // user = new BehaviorSubject<{ _id: string; _token: string; email: string }>(
   //   null
   // );
-  user = new BehaviorSubject<{ _id: string; _token: string; email: string }>({
+  user = new BehaviorSubject<{
+    _id: string;
+    _token: string;
+    email: string;
+    admin: boolean;
+  }>({
     _id: "123",
     _token: "almakota",
-    email: "ala12@12.pl"
+    email: "ala12@12.pl",
+    admin: false
   });
   tokenExpTimer: any;
   constructor(private http: HttpClient, private router: Router) {}
@@ -66,7 +72,8 @@ export class AuthService {
     const user = {
       _id: userId,
       _token: token,
-      email: email
+      email: email,
+      admin: false
     };
 
     this.user.next(user);
@@ -91,7 +98,8 @@ export class AuthService {
     const loadedUser = {
       email: userData.email,
       _id: userData._id,
-      _token: userData._token
+      _token: userData._token,
+      admin: false
     };
 
     if (loadedUser._token) {
