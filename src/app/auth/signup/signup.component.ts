@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { NgForm } from "@angular/forms";
+import { AuthService } from "../auth.service";
 
 @Component({
   selector: "app-signup",
@@ -8,7 +9,8 @@ import { NgForm } from "@angular/forms";
   styleUrls: ["./signup.component.css"]
 })
 export class SignupComponent implements OnInit {
-  constructor(private router: Router) {}
+  error: string;
+  constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit() {}
   adminmode() {
@@ -20,6 +22,20 @@ export class SignupComponent implements OnInit {
     }
     const email = form.value.email;
     const password = form.value.password;
-    console.log(email, password);
+    let tutor = form.value.tutor;
+    if (!tutor) {
+      tutor = false;
+    }
+    console.log(email, password, tutor);
+    this.authService.signup(email, password, null, tutor).subscribe(
+      resData => {
+        console.log(resData);
+        console.log("aaa");
+      },
+      err => {
+        this.error = err;
+        console.log(err, "aaa");
+      }
+    );
   }
 }

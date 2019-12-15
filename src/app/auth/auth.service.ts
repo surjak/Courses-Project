@@ -128,25 +128,32 @@ export class AuthService {
   }
 
   private handleError(errorRes: HttpErrorResponse) {
-    let error = errorRes.error.message;
+    let error = null;
+    if (errorRes.error.message) {
+      error = errorRes.error.message;
+    }
+    if (errorRes.error.data) {
+      error = errorRes.error.data[0].msg;
+    }
+
     if (error == null) {
       error = "An unknown error occured!";
     }
 
-    if (!errorRes.error || !errorRes.error.error) {
-      return throwError(error);
-    }
-    switch (errorRes.error.message) {
-      case "EMAIL_EXISTS":
-        error = "This email already exists";
-        break;
-      case "EMAIL_NOT_FOUND":
-        error = "This email was not found";
-        break;
-      case "INVALID_PASSWORD":
-        error = "Password is incorrect";
-        break;
-    }
+    // if (!errorRes.error || !errorRes.error.error) {
+    //   return throwError(error);
+    // }
+    // switch (errorRes.error.message) {
+    //   case "EMAIL_EXISTS":
+    //     error = "This email already exists";
+    //     break;
+    //   case "EMAIL_NOT_FOUND":
+    //     error = "This email was not found";
+    //     break;
+    //   case "INVALID_PASSWORD":
+    //     error = "Password is incorrect";
+    //     break;
+    // }
     return throwError(error);
   }
 }

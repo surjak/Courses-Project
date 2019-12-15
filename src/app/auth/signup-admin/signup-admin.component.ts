@@ -28,7 +28,7 @@ export class SignupAdminComponent implements OnInit {
       tutor = false;
     }
     console.log(email, password, key, tutor);
-    this.authService.signup(email, password, key, false).subscribe(
+    this.authService.signup(email, password, key, tutor).subscribe(
       resData => {
         console.log(resData);
         console.log("aaa");

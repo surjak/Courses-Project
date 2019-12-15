@@ -33,6 +33,15 @@
             minlength="6"
           />
         </div>
+        <div class="form-check">
+          <input
+            type="checkbox"
+            id="tutor"
+            ngModel
+            name="tutor"
+            class="form-check-input"
+          /><label for="tutor" class="form-check-label">Teacher</label>
+        </div>
         <div>
           <button
             class="btn btn-primary"
@@ -43,6 +52,7 @@
           </button>
         </div>
       </form>
+      <p class="lead mt-3" *ngIf="error">{{ error }}</p>
     </div>
   </div>
 </div>
