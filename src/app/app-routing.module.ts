@@ -13,6 +13,7 @@ import { RemoveTeacherComponent } from "./remove-teacher/remove-teacher.componen
 import { TeacherDetailsComponent } from "./teacher-list/teacher-details/teacher-details.component";
 import { MyCoursesComponent } from "./my-courses/my-courses.component";
 import { AuthGuardService } from "./auth/auth-guard.service";
+import { OneCourseComponent } from "./my-courses/one-course/one-course.component";
 
 const routes: Routes = [
   {
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: "teachers", component: TeacherListComponent },
   { path: "teachers/:id", component: TeacherDetailsComponent },
   { path: "mycourses", component: MyCoursesComponent },
+  { path: "mycourses/:id", component: OneCourseComponent },
 
   {
     path: "admin-panel",

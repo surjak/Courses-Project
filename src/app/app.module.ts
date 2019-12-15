@@ -22,6 +22,7 @@ import { TeacherDetailsComponent } from "./teacher-list/teacher-details/teacher-
 import { MyCoursesComponent } from "./my-courses/my-courses.component";
 
 import { MyCourseItemComponent } from "./my-courses/my-course-item/my-course-item.component";
+import { OneCourseComponent } from './my-courses/one-course/one-course.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,9 @@ import { MyCourseItemComponent } from "./my-courses/my-course-item/my-course-ite
     TeacherDetailsComponent,
     MyCoursesComponent,
 
-    MyCourseItemComponent
+    MyCourseItemComponent,
+
+    OneCourseComponent
   ],
   imports: [
     BrowserModule,

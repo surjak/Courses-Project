@@ -13,6 +13,6 @@ export class MyCourseItemComponent implements OnInit {
 
   ngOnInit() {}
   navigate() {
-    this.router.navigate(["courses", this.course._id]);
+    this.router.navigate(["mycourses", this.course._id]);
   }
 }

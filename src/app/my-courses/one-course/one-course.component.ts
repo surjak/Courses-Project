@@ -1,15 +1,15 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { CourseService } from "../course.service";
 import { ICourse } from "src/app/models/icourse.model";
-import { map, switchMap } from "rxjs/operators";
+import { ActivatedRoute, Router } from "@angular/router";
+import { CourseService } from "src/app/course-list/course.service";
+import { map } from "rxjs/operators";
 
 @Component({
-  selector: "app-course-details",
-  templateUrl: "./course-details.component.html",
-  styleUrls: ["./course-details.component.css"]
+  selector: "app-one-course",
+  templateUrl: "./one-course.component.html",
+  styleUrls: ["./one-course.component.css"]
 })
-export class CourseDetailsComponent implements OnInit {
+export class OneCourseComponent implements OnInit {
   course: ICourse;
   rate: number;
   constructor(
@@ -22,5 +22,8 @@ export class CourseDetailsComponent implements OnInit {
     this.route.params.pipe(map(params => params["id"])).subscribe(id => {
       this.course = this.courseService.getCourse(id);
     });
+  }
+  rateCourse(id: number) {
+    this.rate = id;
   }
 }
