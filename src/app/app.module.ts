@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CourseListComponent } from "./course-list/course-list.component";
@@ -22,10 +22,11 @@ import { TeacherDetailsComponent } from "./teacher-list/teacher-details/teacher-
 import { MyCoursesComponent } from "./my-courses/my-courses.component";
 
 import { MyCourseItemComponent } from "./my-courses/my-course-item/my-course-item.component";
-import { OneCourseComponent } from './my-courses/one-course/one-course.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { LoginComponent } from './auth/login/login.component';
-import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component';
+import { OneCourseComponent } from "./my-courses/one-course/one-course.component";
+import { SignupComponent } from "./auth/signup/signup.component";
+import { LoginComponent } from "./auth/login/login.component";
+import { SignupAdminComponent } from "./auth/signup-admin/signup-admin.component";
+import { AuthInterceptorService } from "./auth/auth-interceptor.service";
 
 @NgModule({
   declarations: [
@@ -64,7 +65,13 @@ import { SignupAdminComponent } from './auth/signup-admin/signup-admin.component
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

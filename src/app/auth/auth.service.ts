@@ -56,13 +56,30 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    //todo
-    // this.handleAuthentication(email, "123", "alamakota", 123123);
+    return this.http
+      .post<AuthResponseData>("http://localhost:8080/auth/login", {
+        email: email,
+        password: password,
+        returnSecureToken: true
+      })
+      .pipe(
+        catchError(this.handleError),
+        tap(resData => {
+          this.handleAuthentication(
+            resData.email,
+            resData.userId,
+            resData.token,
+            +resData.expiresIn,
+            resData.admin,
+            resData.tutor
+          );
+        })
+      );
   }
 
   logout() {
     this.user.next(null);
-    this.router.navigate(["/auth"]);
+    this.router.navigate(["/login"]);
     localStorage.removeItem("userData");
     if (this.tokenExpTimer) {
       clearTimeout(this.tokenExpTimer);
@@ -107,6 +124,8 @@ export class AuthService {
       _id: string;
       _token: string;
       expDate: string;
+      admin: boolean;
+      tutor: boolean;
     } = JSON.parse(localStorage.getItem("userData"));
     if (!userData) {
       return;
@@ -116,8 +135,8 @@ export class AuthService {
       email: userData.email,
       _id: userData._id,
       _token: userData._token,
-      admin: false,
-      tutor: false
+      admin: userData.admin,
+      tutor: userData.tutor
     };
 
     if (loadedUser._token) {
@@ -139,21 +158,6 @@ export class AuthService {
     if (error == null) {
       error = "An unknown error occured!";
     }
-
-    // if (!errorRes.error || !errorRes.error.error) {
-    //   return throwError(error);
-    // }
-    // switch (errorRes.error.message) {
-    //   case "EMAIL_EXISTS":
-    //     error = "This email already exists";
-    //     break;
-    //   case "EMAIL_NOT_FOUND":
-    //     error = "This email was not found";
-    //     break;
-    //   case "INVALID_PASSWORD":
-    //     error = "Password is incorrect";
-    //     break;
-    // }
     return throwError(error);
   }
 }

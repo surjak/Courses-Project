@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { AuthService } from "../auth.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-login",
@@ -8,7 +10,12 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  constructor(private http: HttpClient) {}
+  error: string;
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
 
@@ -18,17 +25,16 @@ export class LoginComponent implements OnInit {
     }
     const email = form.value.email;
     const password = form.value.password;
-    console.log(email, password, "aaa");
-    // const user = { id: 1, name: "Hello" };
-    // const headers = new HttpHeaders()
-    //   .set("Authorization", "my-auth-token")
-    //   .set("Content-Type", "application/json");
-    // this.http
-    //   .post("http://localhost:8080/", JSON.stringify(user), {
-    //     headers: headers
-    //   })
-    //   .subscribe(data => {
-    //     console.log(data);
-    //   });
+    this.authService.login(email, password).subscribe(
+      res => {
+        console.log(res);
+
+        this.router.navigate(["/courses"]);
+      },
+      errMessage => {
+        this.error = errMessage;
+      }
+    );
+    form.reset();
   }
 }
