@@ -26,7 +26,11 @@
         <li class="nav-item" *ngIf="isAuth" routerLinkActive="active">
           <a class="nav-link" routerLink="/teachers">Teachers</a>
         </li>
-        <li class="nav-item" *ngIf="isAuth" routerLinkActive="active">
+        <li
+          class="nav-item"
+          *ngIf="isAuth && isAdmin"
+          routerLinkActive="active"
+        >
           <a
             class="nav-link"
             routerLink="/admin-panel"

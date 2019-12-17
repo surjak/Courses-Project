@@ -27,6 +27,9 @@ import { SignupComponent } from "./auth/signup/signup.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { SignupAdminComponent } from "./auth/signup-admin/signup-admin.component";
 import { AuthInterceptorService } from "./auth/auth-interceptor.service";
+import { EctsPipe } from './shared/ects.pipe';
+import { RatePipe } from './shared/rate.pipe';
+import { SemesterPipe } from './shared/semester.pipe';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,13 @@ import { AuthInterceptorService } from "./auth/auth-interceptor.service";
 
     LoginComponent,
 
-    SignupAdminComponent
+    SignupAdminComponent,
+
+    EctsPipe,
+
+    RatePipe,
+
+    SemesterPipe
   ],
   imports: [
     BrowserModule,

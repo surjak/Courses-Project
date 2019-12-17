@@ -60,11 +60,21 @@ export class TeachersService {
     return teachersList;
   }
   removeTeacher(id: string) {
-    let c = this.teachers.find(c => c._id === id);
-    let index = this.teachers.indexOf(c);
-    this.teachers.splice(index, 1);
-    this.teachersChanged.next(this.teachers.slice());
-    console.log(this.teachers);
+    return this.http
+      .post("http://localhost:8080/teachers/remove", {
+        teacherId: id
+      })
+      .subscribe(
+        res => {
+          let c = this.teachers.find(c => c._id === id);
+          let index = this.teachers.indexOf(c);
+          this.teachers.splice(index, 1);
+          this.teachersChanged.next(this.teachers.slice());
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
 
   addTeacher(

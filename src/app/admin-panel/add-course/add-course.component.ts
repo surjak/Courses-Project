@@ -12,6 +12,7 @@ import { ICourse } from "src/app/models/icourse.model";
   styleUrls: ["./add-course.component.css"]
 })
 export class AddCourseComponent implements OnInit {
+  error: string;
   courseForm: FormGroup;
   teachers: ITutor[];
   courseTeachers = [];
@@ -53,17 +54,25 @@ export class AddCourseComponent implements OnInit {
     let imageUrl: string = this.courseForm.value["imageUrl"];
     let description: string = this.courseForm.value["description"];
     let max: Number = this.courseForm.value["max"];
-    this.courseService.addCourse(
-      name,
-      ects,
-      semester,
-      formOfCourse,
-      imageUrl,
-      description,
-      max,
-      this.courseTeachers
-    );
-    this.route.navigate(["/courses"]);
+    this.courseService
+      .addCourse(
+        name,
+        ects,
+        semester,
+        formOfCourse,
+        imageUrl,
+        description,
+        max,
+        this.courseTeachers
+      )
+      .subscribe(
+        res => {
+          this.route.navigate(["/courses"]);
+        },
+        err => {
+          this.error = err;
+        }
+      );
   }
   onCancel() {
     console.log("cencel");

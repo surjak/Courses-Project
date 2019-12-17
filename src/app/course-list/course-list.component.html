@@ -1,9 +1,30 @@
 <div class="container mt-5">
   <div class="row ">
-    <div class="col-6 offset-3 mt-4">
+    <div class="col-3  mt-4">
       <input
         [(ngModel)]="searchText"
         placeholder="Search for courses"
+        class="form-control"
+      />
+    </div>
+    <div class="col-3  mt-4">
+      <input
+        [(ngModel)]="searchECTS"
+        placeholder="Filter by ECTS"
+        class="form-control"
+      />
+    </div>
+    <div class="col-3  mt-4">
+      <input
+        [(ngModel)]="semesterFilter"
+        placeholder="Filter by Semester"
+        class="form-control"
+      />
+    </div>
+    <div class="col-3  mt-4">
+      <input
+        [(ngModel)]="gradeFilter"
+        placeholder="Filter by grade"
         class="form-control"
       />
     </div>
@@ -14,7 +35,13 @@
   <div class="row ">
     <app-course
       class="col-3 mt-4"
-      *ngFor="let course of courses | filter: searchText"
+      *ngFor="
+        let course of courses
+          | filter: searchText
+          | ects: searchECTS
+          | rate: gradeFilter
+          | semester: semesterFilter
+      "
       [id]="course._id"
       [imageUrl]="course.imageUrl"
       [name]="course.name"

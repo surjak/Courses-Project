@@ -10,11 +10,15 @@ import { AuthService } from "../auth/auth.service";
 export class NavbarComponent implements OnInit {
   private userSub: Subscription;
   isAuth = false;
+  isAdmin = false;
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
     this.userSub = this.authService.user.subscribe(user => {
       this.isAuth = !!user;
+      if (user) {
+        this.isAdmin = user.admin;
+      }
     });
   }
 

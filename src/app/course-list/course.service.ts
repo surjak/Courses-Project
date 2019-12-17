@@ -50,23 +50,40 @@ export class CourseService {
     max: Number,
     teachersID: any[]
   ) {
-    let teacherList: ITutor[] = this.teacherService.getTeachersById(teachersID);
-    let course: ICourse = {
-      _id: (this.courses.length + 1).toString(),
-      description: description,
-      ects: ects,
-      formOfCourse: formOfCourse,
-      grade: 0,
-      imageUrl: imageUrl,
-      max: max,
-      name: name,
-      semester: semester,
-      tutors: teacherList
-    };
-    console.log(course);
+    return this.http
+      .post<{ courseID: string }>("http://localhost:8080/courses/addCourse", {
+        name: name,
+        ects: ects,
+        semester: semester,
+        formOfCourse: formOfCourse,
+        imageURL: imageUrl,
+        teachers: teachersID,
+        description: description,
+        max: max
+      })
+      .pipe(
+        tap(res => {
+          let teacherList: ITutor[] = this.teacherService.getTeachersById(
+            teachersID
+          );
+          let course: ICourse = {
+            _id: res.courseID,
+            description: description,
+            ects: ects,
+            formOfCourse: formOfCourse,
+            grade: 0,
+            imageUrl: imageUrl,
+            max: max,
+            name: name,
+            semester: semester,
+            tutors: teacherList
+          };
+          console.log(course);
 
-    this.courses.push(course);
-    this.coursesChanged.next(this.courses);
+          this.courses.push(course);
+          this.coursesChanged.next(this.courses);
+        })
+      );
   }
 
   editCourse(
@@ -170,7 +187,7 @@ export class Courses {
     {
       _id: "2",
       name: "Aolikacje Internetowe",
-      ects: 1,
+      ects: 3,
       description: "fajny kurs",
       formOfCourse: "Lecture",
       grade: 3,
@@ -199,7 +216,7 @@ export class Courses {
       ects: 1,
       description: "fajny kurs",
       formOfCourse: "Lecture",
-      grade: 3,
+      grade: 2,
       imageUrl:
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
 
@@ -216,7 +233,7 @@ export class Courses {
       grade: 3,
       imageUrl:
         "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
-      semester: 1,
+      semester: 5,
       max: 1,
       tutors: []
     },

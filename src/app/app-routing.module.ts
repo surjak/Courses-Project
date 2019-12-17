@@ -45,7 +45,8 @@ const routes: Routes = [
   {
     path: "teachers/:id",
     component: TeacherDetailsComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    resolve: [TeachersResolverService]
   },
   {
     path: "mycourses",
@@ -62,6 +63,7 @@ const routes: Routes = [
     path: "admin-panel",
     component: AdminPanelComponent,
     canActivate: [AuthGuardService],
+    resolve: [TeachersResolverService],
     children: [
       { path: "add-course", component: AddCourseComponent },
       {
@@ -69,10 +71,17 @@ const routes: Routes = [
         component: EditCourseComponent,
         pathMatch: "full"
       },
-      { path: "edit-course/:id", component: EditCourseItemComponent },
+      {
+        path: "edit-course/:id",
+        component: EditCourseItemComponent
+      },
+
       { path: "remove-course", component: RemoveCourseComponent },
       { path: "add-teacher", component: AddTeacherComponent },
-      { path: "remove-teacher", component: RemoveTeacherComponent }
+      {
+        path: "remove-teacher",
+        component: RemoveTeacherComponent
+      }
     ]
   },
   { path: "login", component: LoginComponent },
