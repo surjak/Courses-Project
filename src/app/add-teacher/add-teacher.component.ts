@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 })
 export class AddTeacherComponent implements OnInit {
   teacherForm: FormGroup;
-
+  error: string;
   constructor(private teacherService: TeachersService, private route: Router) {}
 
   private initForm() {
@@ -41,27 +41,18 @@ export class AddTeacherComponent implements OnInit {
     let telephone: string = this.teacherForm.value["telephone"];
     let mail: string = this.teacherForm.value["mail"];
     let personalPage: string = this.teacherForm.value["personalPage"];
-    this.teacherService.addTeacher(
-      name,
-      surname,
-      imageUrl,
-      telephone,
-      mail,
-      personalPage
-    );
+    this.teacherService
+      .addTeacher(name, surname, imageUrl, telephone, mail, personalPage)
+      .subscribe(
+        res => {
+          this.route.navigate(["/teachers"]);
+        },
+        err => {
+          console.log(err);
 
-    this.route.navigate(["/teachers"]);
-    // this.courseService.addCourse(
-    //   name,
-    //   ects,
-    //   semester,
-    //   formOfCourse,
-    //   imageUrl,
-    //   description,
-    //   max,
-    //   this.courseTeachers
-    // );
-    // this.route.navigate(["/courses"]);
+          this.error = err.error.message;
+        }
+      );
   }
 
   onCancel() {

@@ -59,8 +59,7 @@ export class AuthService {
     return this.http
       .post<AuthResponseData>("http://localhost:8080/auth/login", {
         email: email,
-        password: password,
-        returnSecureToken: true
+        password: password
       })
       .pipe(
         catchError(this.handleError),

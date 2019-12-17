@@ -17,6 +17,7 @@ import { OneCourseComponent } from "./my-courses/one-course/one-course.component
 import { LoginComponent } from "./auth/login/login.component";
 import { SignupComponent } from "./auth/signup/signup.component";
 import { SignupAdminComponent } from "./auth/signup-admin/signup-admin.component";
+import { TeachersResolverService } from "./teacher-list/teachers-resolver.service";
 
 const routes: Routes = [
   {
@@ -27,16 +28,35 @@ const routes: Routes = [
   {
     path: "courses",
     pathMatch: "full",
-    component: CourseListComponent
+    component: CourseListComponent,
+    canActivate: [AuthGuardService]
   },
   {
     path: "courses/:id",
-    component: CourseDetailsComponent
+    component: CourseDetailsComponent,
+    canActivate: [AuthGuardService]
   },
-  { path: "teachers", component: TeacherListComponent },
-  { path: "teachers/:id", component: TeacherDetailsComponent },
-  { path: "mycourses", component: MyCoursesComponent },
-  { path: "mycourses/:id", component: OneCourseComponent },
+  {
+    path: "teachers",
+    component: TeacherListComponent,
+    canActivate: [AuthGuardService],
+    resolve: [TeachersResolverService]
+  },
+  {
+    path: "teachers/:id",
+    component: TeacherDetailsComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: "mycourses",
+    component: MyCoursesComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: "mycourses/:id",
+    component: OneCourseComponent,
+    canActivate: [AuthGuardService]
+  },
 
   {
     path: "admin-panel",

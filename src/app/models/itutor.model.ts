@@ -9,6 +9,6 @@ export interface ITutor {
   mail: string;
   personalPage: string;
   learningSkills?: IComment[];
-  xxx?: IComment[];
-  yyy?: IComment[];
+  personalSkills?: IComment[];
+  softSkills?: IComment[];
 }
