@@ -14,6 +14,11 @@ export class CourseComponent implements OnInit {
 
   ngOnInit() {}
   joinCourse() {
-    this.userService.joinCourse(this.id);
+    this.userService.joinCourse(this.id).subscribe(
+      res => {},
+      err => {
+        alert("Yu are already in this course");
+      }
+    );
   }
 }

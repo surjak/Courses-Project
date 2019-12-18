@@ -1,6 +1,9 @@
 import { Injectable } from "@angular/core";
 import { IUser } from "./models/iuser.model";
 import { CourseService } from "./course-list/course.service";
+import { HttpClient } from "@angular/common/http";
+import { tap } from "rxjs/operators";
+import { ICourse } from "./models/icourse.model";
 
 @Injectable({
   providedIn: "root"
@@ -14,10 +17,13 @@ export class UserService {
     email: "aaa@12.pl",
     courses: []
   };
-  constructor(private courseService: CourseService) {}
+  constructor(private courseService: CourseService, private http: HttpClient) {}
 
   getCourses() {
     return this.user.courses.slice();
+  }
+  resetCourses() {
+    this.user.courses = [];
   }
 
   joinCourse(id) {
@@ -30,7 +36,40 @@ export class UserService {
     if (flag) {
       this.user.courses.push(this.courseService.getCourse(id));
     }
-
-    console.log(this.user.courses);
+    return this.http
+      .post("http://localhost:8080/courses/addCourseToUser", {
+        courseId: id
+      })
+      .pipe(
+        tap(res => {
+          console.log(res);
+        })
+      );
+  }
+  fetchCourses() {
+    return this.http
+      .get<{ data: any }>("http://localhost:8080/courses/getUserCourses")
+      .pipe(
+        tap(courses => {
+          console.log(courses.data);
+          courses.data.forEach(c => {
+            this.user.courses.push({
+              _id: c._id,
+              name: c.name,
+              ects: c.ects,
+              description: c.description,
+              formOfCourse: c.formOfCourse,
+              grade: c.grade,
+              imageUrl: c.imageURL,
+              max: c.max,
+              semester: c.semester,
+              tutors: c.tutors,
+              attendees: c.attendees,
+              comments: c.comments
+            });
+          });
+          // this.user.courses = courses.data;
+        })
+      );
   }
 }
