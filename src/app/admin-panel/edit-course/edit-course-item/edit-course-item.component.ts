@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ICourse } from "src/app/models/icourse.model";
 import { CourseService } from "src/app/course-list/course.service";
@@ -12,12 +12,12 @@ import { ITutor } from "src/app/models/itutor.model";
   templateUrl: "./edit-course-item.component.html",
   styleUrls: ["./edit-course-item.component.css"]
 })
-export class EditCourseItemComponent implements OnInit {
+export class EditCourseItemComponent implements OnInit, OnDestroy {
   courseForm: FormGroup;
   courseTeachers = [];
   course: ICourse;
   teachers = [];
-
+  error: string;
   constructor(
     private route: ActivatedRoute,
     private courseService: CourseService,
@@ -63,9 +63,16 @@ export class EditCourseItemComponent implements OnInit {
         }
       });
     });
-    console.log(this.teachers);
 
     this.initForm();
+  }
+
+  ngOnDestroy() {
+    this.teachers.map(t => {
+      this.courseTeachers.forEach(id => {
+        t.selected = false;
+      });
+    });
   }
 
   onSubmit() {
@@ -78,18 +85,26 @@ export class EditCourseItemComponent implements OnInit {
     let description: string = this.courseForm.value["description"];
     let max: Number = this.courseForm.value["max"];
 
-    this.courseService.editCourse(
-      id,
-      name,
-      ects,
-      semester,
-      formOfCourse,
-      imageUrl,
-      description,
-      max,
-      this.courseTeachers
-    );
-    this.router.navigate(["/courses"]);
+    this.courseService
+      .editCourse(
+        id,
+        name,
+        ects,
+        semester,
+        formOfCourse,
+        imageUrl,
+        description,
+        max,
+        this.courseTeachers
+      )
+      .subscribe(
+        res => {
+          this.router.navigate(["/courses"]);
+        },
+        err => {
+          this.error = err;
+        }
+      );
   }
 
   onCancel() {

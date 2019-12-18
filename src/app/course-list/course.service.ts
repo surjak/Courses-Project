@@ -40,10 +40,19 @@ export class CourseService {
     return this.courses.slice();
   }
   removeCourse(id: string) {
-    let c = this.courses.find(c => c._id === id);
-    let index = this.courses.indexOf(c);
-    this.courses.splice(index, 1);
-    this.coursesChanged.next(this.courses.slice());
+    this.http
+      .post("http://localhost:8080/courses/delete", { courseID: id })
+      .subscribe(
+        res => {
+          let c = this.courses.find(c => c._id === id);
+          let index = this.courses.indexOf(c);
+          this.courses.splice(index, 1);
+          this.coursesChanged.next(this.courses.slice());
+        },
+        err => {
+          console.log(err);
+        }
+      );
     console.log(this.courses);
   }
 
@@ -112,18 +121,36 @@ export class CourseService {
     max: Number,
     teachersID: any[]
   ) {
-    let teacherList: ITutor[] = this.teacherService.getTeachersById(teachersID);
-    this.courses.map(course => {
-      if (course._id == id) {
-        course.name = name;
-        course.ects = ects;
-        course.semester = semester;
-        course.formOfCourse = formOfCourse;
-        course.imageUrl = imageUrl;
-        course.description = description;
-        course.max = max;
-        course.tutors = teacherList;
-      }
-    });
+    return this.http
+      .post("http://localhost:8080/courses/editCourse", {
+        courseId: id,
+        name: name,
+        ects: ects,
+        semester: semester,
+        formOfCourse: formOfCourse,
+        imageURL: imageUrl,
+        teachers: teachersID,
+        description: description,
+        max: max
+      })
+      .pipe(
+        tap(res => {
+          let teacherList: ITutor[] = this.teacherService.getTeachersById(
+            teachersID
+          );
+          this.courses.map(course => {
+            if (course._id == id) {
+              course.name = name;
+              course.ects = ects;
+              course.semester = semester;
+              course.formOfCourse = formOfCourse;
+              course.imageUrl = imageUrl;
+              course.description = description;
+              course.max = max;
+              course.tutors = teacherList;
+            }
+          });
+        })
+      );
   }
 }

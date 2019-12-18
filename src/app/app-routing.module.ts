@@ -36,7 +36,8 @@ const routes: Routes = [
   {
     path: "courses/:id",
     component: CourseDetailsComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    resolve: [CourseResolverService]
   },
   {
     path: "teachers",
@@ -53,19 +54,21 @@ const routes: Routes = [
   {
     path: "mycourses",
     component: MyCoursesComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    resolve: [CourseResolverService]
   },
   {
     path: "mycourses/:id",
     component: OneCourseComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    resolve: [CourseResolverService]
   },
 
   {
     path: "admin-panel",
     component: AdminPanelComponent,
     canActivate: [AuthGuardService],
-    resolve: [TeachersResolverService],
+    resolve: [TeachersResolverService, CourseResolverService],
     children: [
       { path: "add-course", component: AddCourseComponent },
       {
