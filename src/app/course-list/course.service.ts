@@ -10,7 +10,7 @@ import { ITutor } from "../models/itutor.model";
 })
 export class CourseService {
   coursesChanged = new Subject<ICourse[]>();
-  courses: ICourse[] = Courses.courses;
+  courses: ICourse[] = [];
 
   constructor(
     private http: HttpClient,
@@ -19,6 +19,21 @@ export class CourseService {
 
   getCourse<ICourse>(id: string) {
     return this.courses.filter(c => c._id === id)[0];
+  }
+  fetchCourses() {
+    return this.http
+      .get<{ data: ICourse[] }>("http://localhost:8080/courses")
+      .pipe(
+        tap(courses => {
+          console.log(courses.data);
+          courses.data.forEach(t => console.log(t));
+          this.setCourses(courses.data);
+        })
+      );
+  }
+  setCourses(courses: ICourse[]) {
+    this.courses = courses;
+    this.coursesChanged.next(this.courses.slice());
   }
 
   getCourses() {
@@ -111,210 +126,4 @@ export class CourseService {
       }
     });
   }
-}
-
-export class Courses {
-  static courses = [
-    {
-      _id: "0",
-      name: "Matma",
-      ects: 1,
-      description: "fajny kurs",
-      formOfCourse: "Lecture",
-      grade: 3,
-      imageUrl:
-        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
-
-      semester: 1,
-      max: 1,
-      tutors: [
-        {
-          _id: "1",
-          name: "Walter",
-          surname: "White",
-          imageUrl:
-            "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/35/1600x1600/square_ustv-breaking-bad-season-2-pictures-4.jpg?crop=0.874xw:0.874xh;0,0.126xh&resize=480:*",
-          mail: "ww@gmail.com",
-          personalPage: "www.google.com",
-          telephone: "123123123"
-        },
-        {
-          _id: "2",
-          name: "Walter",
-          surname: "White",
-          imageUrl:
-            "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/35/1600x1600/square_ustv-breaking-bad-season-2-pictures-4.jpg?crop=0.874xw:0.874xh;0,0.126xh&resize=480:*",
-          mail: "ww@gmail.com",
-          personalPage: "www.google.com",
-          telephone: "123123123"
-        }
-      ]
-    },
-    {
-      _id: "1",
-      name: "Fizyka",
-      ects: 1,
-      description: "fajny kurs",
-      formOfCourse: "Lecture",
-      grade: 3,
-      imageUrl:
-        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
-      semester: 1,
-      max: 1,
-      tutors: [
-        {
-          _id: "1",
-          name: "Walter",
-          surname: "White",
-          imageUrl:
-            "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/35/1600x1600/square_ustv-breaking-bad-season-2-pictures-4.jpg?crop=0.874xw:0.874xh;0,0.126xh&resize=480:*",
-          mail: "ww@gmail.com",
-          personalPage: "www.google.com",
-          telephone: "123123123"
-        },
-        {
-          _id: "2",
-          name: "Walter",
-          surname: "White",
-          imageUrl:
-            "https://hips.hearstapps.com/digitalspyuk.cdnds.net/13/35/1600x1600/square_ustv-breaking-bad-season-2-pictures-4.jpg?crop=0.874xw:0.874xh;0,0.126xh&resize=480:*",
-          mail: "ww@gmail.com",
-          personalPage: "www.google.com",
-          telephone: "123123123"
-        }
-      ]
-    },
-    {
-      _id: "2",
-      name: "Aolikacje Internetowe",
-      ects: 3,
-      description: "fajny kurs",
-      formOfCourse: "Lecture",
-      grade: 3,
-      imageUrl:
-        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
-      semester: 1,
-      max: 1,
-      tutors: []
-    },
-    {
-      _id: "3",
-      name: "PO",
-      ects: 1,
-      description: "fajny kurs",
-      formOfCourse: "Lecture",
-      grade: 3,
-      imageUrl:
-        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
-      semester: 1,
-      max: 1,
-      tutors: []
-    },
-    {
-      _id: "4",
-      name: "Matma",
-      ects: 1,
-      description: "fajny kurs",
-      formOfCourse: "Lecture",
-      grade: 2,
-      imageUrl:
-        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
-
-      semester: 1,
-      max: 1,
-      tutors: []
-    },
-    {
-      _id: "5",
-      name: "Fizyka",
-      ects: 1,
-      description: "fajny kurs",
-      formOfCourse: "Lecture",
-      grade: 3,
-      imageUrl:
-        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
-      semester: 5,
-      max: 1,
-      tutors: []
-    },
-    {
-      _id: "6",
-      name: "Aolikacje Internetowe",
-      ects: 1,
-      description: "fajny kurs",
-      formOfCourse: "Lecture",
-      grade: 3,
-      imageUrl:
-        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
-      semester: 1,
-      max: 1,
-      tutors: []
-    },
-    {
-      _id: "7",
-      name: "PO",
-      ects: 1,
-      description: "fajny kurs",
-      formOfCourse: "Lecture",
-      grade: 3,
-      imageUrl:
-        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
-      semester: 1,
-      max: 1,
-      tutors: []
-    },
-    {
-      _id: "8",
-      name: "Matma",
-      ects: 1,
-      description: "fajny kurs",
-      formOfCourse: "Lecture",
-      grade: 3,
-      imageUrl:
-        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
-
-      semester: 1,
-      max: 1,
-      tutors: []
-    },
-    {
-      _id: "9",
-      name: "Fizyka",
-      ects: 1,
-      description: "fajny kurs",
-      formOfCourse: "Lecture",
-      grade: 3,
-      imageUrl:
-        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
-      semester: 1,
-      max: 1,
-      tutors: []
-    },
-    {
-      _id: "10",
-      name: "Aolikacje Internetowe",
-      ects: 1,
-      description: "fajny kurs",
-      formOfCourse: "Lecture",
-      grade: 3,
-      imageUrl:
-        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
-      semester: 1,
-      max: 1,
-      tutors: []
-    },
-    {
-      _id: "11",
-      name: "PO",
-      ects: 1,
-      description: "fajny kurs",
-      formOfCourse: "Lecture",
-      grade: 3,
-      imageUrl:
-        "http://wolnedzieci.eu/wp-content/uploads/2018/08/wolnedzieci-matematyka-uczymy-dzieci-w-domu_.jpg",
-      semester: 1,
-      max: 1,
-      tutors: []
-    }
-  ];
 }

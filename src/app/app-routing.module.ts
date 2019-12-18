@@ -18,6 +18,7 @@ import { LoginComponent } from "./auth/login/login.component";
 import { SignupComponent } from "./auth/signup/signup.component";
 import { SignupAdminComponent } from "./auth/signup-admin/signup-admin.component";
 import { TeachersResolverService } from "./teacher-list/teachers-resolver.service";
+import { CourseResolverService } from "./course-list/course-resolver.service";
 
 const routes: Routes = [
   {
@@ -29,7 +30,8 @@ const routes: Routes = [
     path: "courses",
     pathMatch: "full",
     component: CourseListComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+    resolve: [CourseResolverService]
   },
   {
     path: "courses/:id",

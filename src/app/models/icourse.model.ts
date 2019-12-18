@@ -13,4 +13,5 @@ export interface ICourse {
   tutors: ITutor[];
   max: Number;
   comments?: IComment[];
+  attendees?: Number;
 }
