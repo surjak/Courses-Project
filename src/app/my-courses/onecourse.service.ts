@@ -10,6 +10,8 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class OnecourseService {
+  countOfNotes: number;
+  sumOfNotes: number;
   rate: number;
   course: ICourse;
   constructor(
@@ -48,9 +50,11 @@ export class OnecourseService {
           if (countOfNotes != 0) {
             grade = +(sumOfNotes / countOfNotes).toFixed(2);
           }
+          this.countOfNotes = countOfNotes;
+          this.sumOfNotes = sumOfNotes;
           this.rate = res.data.note;
           this.course = {
-            _id: res.data.courseId._id,
+            _id: _id,
             description: description,
             ects: ects,
             formOfCourse: formOfCourse,
@@ -63,6 +67,33 @@ export class OnecourseService {
             comments: comments,
             grade: grade
           };
+        })
+      );
+  }
+  rateCourse(newRate: number) {
+    return this.http
+      .post("http://localhost:8080/courses/rate", {
+        courseId: this.course._id,
+        rate: newRate
+      })
+      .pipe(
+        tap(res => {
+          if (this.rate == null) {
+            this.rate = newRate;
+            this.countOfNotes++;
+            this.sumOfNotes += newRate;
+            this.course.grade = +(this.sumOfNotes / this.countOfNotes).toFixed(
+              2
+            );
+          } else {
+            this.sumOfNotes -= this.rate;
+            this.sumOfNotes += newRate;
+            this.rate = newRate;
+            this.course.grade = +(this.sumOfNotes / this.countOfNotes).toFixed(
+              2
+            );
+          }
+          this.courseService.editCourseRate(this.course._id, this.course.grade);
         })
       );
   }

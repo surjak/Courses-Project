@@ -26,7 +26,10 @@ export class OneCourseComponent implements OnInit {
     this.course = this.oneCourseService.course;
     this.rate = this.oneCourseService.rate;
   }
-  rateCourse(id: number) {
-    this.rate = id;
+  rateCourse(rate: number) {
+    this.oneCourseService.rateCourse(rate).subscribe(res => {
+      this.course = this.oneCourseService.course;
+      this.rate = this.oneCourseService.rate;
+    });
   }
 }

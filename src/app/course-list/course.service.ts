@@ -153,4 +153,12 @@ export class CourseService {
         })
       );
   }
+  editCourseRate(id: string, rate: Number) {
+    this.courses.map(course => {
+      if (course._id == id) {
+        course.grade = rate;
+      }
+    });
+    this.coursesChanged.next(this.courses.slice());
+  }
 }

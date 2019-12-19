@@ -12,12 +12,19 @@
 </div>
 <div class="container" *ngIf="rate">
   <div class="row">
-    <div class="col-9"></div>
-    <div class="col-3">Your Rate: {{ rate }}</div>
+    <div class="col-4"></div>
+    <div class="col-4">
+      <p class="lead">Your Rate: {{ rate }}</p>
+    </div>
+    <div class="col-4">
+      <button class="btn btn-outline-warning" (click)="rate = null">
+        Change Rate
+      </button>
+    </div>
   </div>
 </div>
 <div class="container">
-  <div class="row ">
+  <div class="row " *ngIf="!rate">
     <div class="col-5 ">
       <h1 class="lead display-4 ml-0">Rate this course</h1>
     </div>
