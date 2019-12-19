@@ -94,14 +94,10 @@
     <div class="col-4">
       <p class="lead">ECTS: {{ course.ects }}</p>
       <p class="lead">Semester: {{ course.semester }}</p>
-      <p class="lead">Type of course: {{ course.formOfCourse }}</p>
-      <p class="lead">Rating: {{ course.grade }}</p>
     </div>
     <div class="col-4">
-      <p class="lead">Techers:</p>
-      <p class="lead" *ngFor="let teacher of course.tutors">
-        {{ teacher.name }} {{ teacher.surname }}
-      </p>
+      <p class="lead">Type of course: {{ course.formOfCourse }}</p>
+      <p class="lead">Rating: {{ course.grade }}</p>
     </div>
   </div>
 

@@ -54,21 +54,20 @@ export class UserService {
           console.log(courses.data);
           courses.data.forEach(c => {
             this.user.courses.push({
-              _id: c._id,
-              name: c.name,
-              ects: c.ects,
-              description: c.description,
-              formOfCourse: c.formOfCourse,
-              grade: c.grade,
-              imageUrl: c.imageURL,
-              max: c.max,
-              semester: c.semester,
-              tutors: c.tutors,
-              attendees: c.attendees,
-              comments: c.comments
+              _id: c.courseId._id,
+              name: c.courseId.name,
+              ects: c.courseId.ects,
+              description: c.courseId.description,
+              formOfCourse: c.courseId.formOfCourse,
+              grade: c.courseId.grade,
+              imageUrl: c.courseId.imageURL,
+              max: c.courseId.max,
+              semester: c.courseId.semester,
+              tutors: c.courseId.teachers,
+              attendees: c.courseId.attendees,
+              comments: c.courseId.comments
             });
           });
-          // this.user.courses = courses.data;
         })
       );
   }

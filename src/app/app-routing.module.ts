@@ -20,6 +20,7 @@ import { SignupAdminComponent } from "./auth/signup-admin/signup-admin.component
 import { TeachersResolverService } from "./teacher-list/teachers-resolver.service";
 import { CourseResolverService } from "./course-list/course-resolver.service";
 import { UserResolverService } from "./user-resolver.service";
+import { OneCourseServiceResolver } from "./my-courses/onecourse-resolver.service";
 
 const routes: Routes = [
   {
@@ -62,7 +63,11 @@ const routes: Routes = [
     path: "mycourses/:id",
     component: OneCourseComponent,
     canActivate: [AuthGuardService],
-    resolve: [UserResolverService, CourseResolverService]
+    resolve: [
+      UserResolverService,
+      CourseResolverService,
+      OneCourseServiceResolver
+    ]
   },
 
   {

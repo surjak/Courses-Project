@@ -3,6 +3,8 @@ import { ICourse } from "src/app/models/icourse.model";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CourseService } from "src/app/course-list/course.service";
 import { map } from "rxjs/operators";
+import { UserService } from "src/app/user.service";
+import { OnecourseService } from "../onecourse.service";
 
 @Component({
   selector: "app-one-course",
@@ -15,13 +17,14 @@ export class OneCourseComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private userService: UserService,
+    private oneCourseService: OnecourseService
   ) {}
 
   ngOnInit() {
-    this.route.params.pipe(map(params => params["id"])).subscribe(id => {
-      this.course = this.courseService.getCourse(id);
-    });
+    this.course = this.oneCourseService.course;
+    this.rate = this.oneCourseService.rate;
   }
   rateCourse(id: number) {
     this.rate = id;
