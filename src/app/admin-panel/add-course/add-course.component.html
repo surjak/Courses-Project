@@ -23,12 +23,9 @@
   </div>
   <div class="form-group">
     <label for="formOfCourse">Form of Course</label>
-    <input
-      type="text"
-      id="formOfCourse"
-      formControlName="formOfCourse"
-      class="form-control"
-    />
+    <select class="custom-select" (change)="changeForm($event)">
+      <option *ngFor="let form of forms" [ngValue]="form">{{ form }}</option>
+    </select>
   </div>
 
   <div class="form-group">

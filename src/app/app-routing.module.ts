@@ -32,13 +32,13 @@ const routes: Routes = [
     path: "courses",
     pathMatch: "full",
     component: CourseListComponent,
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
     resolve: [CourseResolverService]
   },
   {
     path: "courses/:id",
     component: CourseDetailsComponent,
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
     resolve: [CourseResolverService]
   },
   {

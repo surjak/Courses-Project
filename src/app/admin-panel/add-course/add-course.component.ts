@@ -12,6 +12,8 @@ import { ICourse } from "src/app/models/icourse.model";
   styleUrls: ["./add-course.component.css"]
 })
 export class AddCourseComponent implements OnInit {
+  forms: any[] = ["Lecture", "Exercises", "Project", "Lab"];
+  formOfCourse: string = "Lecture";
   error: string;
   courseForm: FormGroup;
   teachers: ITutor[];
@@ -26,7 +28,7 @@ export class AddCourseComponent implements OnInit {
     let name: string;
     let ects: Number;
     let semester: Number;
-    let formOfCourse: string;
+    // let formOfCourse: string;
     let imageUrl: string;
     let description: string;
     let max: Number;
@@ -35,7 +37,7 @@ export class AddCourseComponent implements OnInit {
       name: new FormControl(name, Validators.required),
       ects: new FormControl(ects, Validators.required),
       semester: new FormControl(semester, Validators.required),
-      formOfCourse: new FormControl(formOfCourse, Validators.required),
+      // formOfCourse: new FormControl(formOfCourse, Validators.required),
       imageUrl: new FormControl(imageUrl, Validators.required),
       description: new FormControl(description, Validators.required),
       max: new FormControl(max, Validators.required)
@@ -46,20 +48,25 @@ export class AddCourseComponent implements OnInit {
     this.initForm();
     this.teachers = this.teacherService.getTeachers();
   }
+  changeForm(e) {
+    this.formOfCourse = e.target.value;
+    console.log(this.formOfCourse);
+  }
   onSubmit() {
     let name: string = this.courseForm.value["name"];
     let ects: Number = this.courseForm.value["ects"];
     let semester: Number = this.courseForm.value["semester"];
-    let formOfCourse: string = this.courseForm.value["formOfCourse"];
+
     let imageUrl: string = this.courseForm.value["imageUrl"];
     let description: string = this.courseForm.value["description"];
     let max: Number = this.courseForm.value["max"];
+
     this.courseService
       .addCourse(
         name,
         ects,
         semester,
-        formOfCourse,
+        this.formOfCourse,
         imageUrl,
         description,
         max,

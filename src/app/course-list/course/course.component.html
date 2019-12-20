@@ -5,6 +5,7 @@
     <div class="mt-3">
       <a routerLink="{{ id }}" class="btn btn-primary">See details</a>
       <a
+        *ngIf="isAuth"
         class="btn btn-outline-secondary ml-2"
         (click)="joinCourse()"
         style="cursor: pointer;"
