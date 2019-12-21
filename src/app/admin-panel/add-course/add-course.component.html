@@ -3,7 +3,7 @@
     <label for="name">Name</label>
     <input type="text" id="name" formControlName="name" class="form-control" />
   </div>
-  <div class="form-group">
+  <!-- <div class="form-group">
     <label for="ects">ECTS</label>
     <input
       type="number"
@@ -20,6 +20,20 @@
       formControlName="semester"
       class="form-control"
     />
+  </div> -->
+  <div class="form-group">
+    <label for="ects">ECTS</label>
+    <select class="custom-select" (change)="changeEcts($event)">
+      <option *ngFor="let ects1 of ectses" [ngValue]="ects">{{ ects1 }}</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="semester">Semester</label>
+    <select class="custom-select" (change)="changeSemester($event)">
+      <option *ngFor="let semester1 of semesters" [ngValue]="semester1">{{
+        semester1
+      }}</option>
+    </select>
   </div>
   <div class="form-group">
     <label for="formOfCourse">Form of Course</label>

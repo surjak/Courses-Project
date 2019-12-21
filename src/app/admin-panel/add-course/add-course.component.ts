@@ -18,6 +18,10 @@ export class AddCourseComponent implements OnInit {
   courseForm: FormGroup;
   teachers: ITutor[];
   courseTeachers = [];
+  ects: number = 0;
+  semester: number = 1;
+  semesters = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  ectses = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   constructor(
     private teacherService: TeachersService,
     private courseService: CourseService,
@@ -26,8 +30,8 @@ export class AddCourseComponent implements OnInit {
 
   private initForm() {
     let name: string;
-    let ects: Number;
-    let semester: Number;
+    // let ects: Number;
+    // let semester: Number;
     // let formOfCourse: string;
     let imageUrl: string;
     let description: string;
@@ -35,8 +39,8 @@ export class AddCourseComponent implements OnInit {
 
     this.courseForm = new FormGroup({
       name: new FormControl(name, Validators.required),
-      ects: new FormControl(ects, Validators.required),
-      semester: new FormControl(semester, Validators.required),
+      // ects: new FormControl(ects, Validators.required),
+      // semester: new FormControl(semester, Validators.required),
       // formOfCourse: new FormControl(formOfCourse, Validators.required),
       imageUrl: new FormControl(imageUrl, Validators.required),
       description: new FormControl(description, Validators.required),
@@ -52,10 +56,18 @@ export class AddCourseComponent implements OnInit {
     this.formOfCourse = e.target.value;
     console.log(this.formOfCourse);
   }
+  changeEcts(e) {
+    this.ects = e.target.value;
+    console.log(this.ects);
+  }
+  changeSemester(e) {
+    this.semester = e.target.value;
+    console.log(this.semester);
+  }
   onSubmit() {
     let name: string = this.courseForm.value["name"];
-    let ects: Number = this.courseForm.value["ects"];
-    let semester: Number = this.courseForm.value["semester"];
+    // let ects: Number = this.courseForm.value["ects"];
+    // let semester: Number = this.courseForm.value["semester"];
 
     let imageUrl: string = this.courseForm.value["imageUrl"];
     let description: string = this.courseForm.value["description"];
@@ -64,8 +76,8 @@ export class AddCourseComponent implements OnInit {
     this.courseService
       .addCourse(
         name,
-        ects,
-        semester,
+        this.ects,
+        this.semester,
         this.formOfCourse,
         imageUrl,
         description,

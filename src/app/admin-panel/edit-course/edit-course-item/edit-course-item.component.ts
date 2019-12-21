@@ -20,6 +20,10 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
   course: ICourse;
   teachers = [];
   error: string;
+  ects: Number = 0;
+  semester: Number = 1;
+  semesters: any[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  ectses: any[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
   constructor(
     private route: ActivatedRoute,
     private courseService: CourseService,
@@ -30,10 +34,18 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
     this.formOfCourse = e.target.value;
     console.log(this.formOfCourse);
   }
+  changeEcts(e) {
+    this.ects = e.target.value;
+    console.log(this.ects);
+  }
+  changeSemester(e) {
+    this.semester = e.target.value;
+    console.log(this.semester);
+  }
   private initForm() {
     let name: string = this.course.name;
-    let ects: Number = this.course.ects;
-    let semester: Number = this.course.semester;
+    // let ects: Number = this.course.ects;
+    // let semester: Number = this.course.semester;
     // let formOfCourse: string = this.course.formOfCourse;
     let imageUrl: string = this.course.imageUrl;
     let description: string = this.course.description;
@@ -41,8 +53,8 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
 
     this.courseForm = new FormGroup({
       name: new FormControl(name, Validators.required),
-      ects: new FormControl(ects, Validators.required),
-      semester: new FormControl(semester, Validators.required),
+      // ects: new FormControl(ects, Validators.required),
+      // semester: new FormControl(semester, Validators.required),
       // formOfCourse: new FormControl(formOfCourse, Validators.required),
       imageUrl: new FormControl(imageUrl, Validators.required),
       description: new FormControl(description, Validators.required),
@@ -54,9 +66,13 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
     this.route.params.pipe(map(params => params["id"])).subscribe(id => {
       this.course = this.courseService.getCourse(id);
       this.formOfCourse = this.course.formOfCourse;
+      this.semester = this.course.semester;
+      this.ects = this.course.ects;
     });
     this.forms = [this.formOfCourse, "Lecture", "Exercises", "Project", "Lab"];
     this.forms = [...new Set(this.forms)];
+    this.ectses = [this.ects, ...this.ectses];
+    this.semesters = [this.semester, ...this.semesters];
     this.course.tutors.forEach(t => {
       this.courseTeachers.push(t._id);
     });
@@ -86,8 +102,8 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
   onSubmit() {
     let id: string = this.course._id;
     let name: string = this.courseForm.value["name"];
-    let ects: Number = this.courseForm.value["ects"];
-    let semester: Number = this.courseForm.value["semester"];
+    // let ects: Number = this.courseForm.value["ects"];
+    // let semester: Number = this.courseForm.value["semester"];
     // let formOfCourse: string = this.courseForm.value["formOfCourse"];
     let imageUrl: string = this.courseForm.value["imageUrl"];
     let description: string = this.courseForm.value["description"];
@@ -97,8 +113,8 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
       .editCourse(
         id,
         name,
-        ects,
-        semester,
+        this.ects,
+        this.semester,
         this.formOfCourse,
         imageUrl,
         description,
