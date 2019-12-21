@@ -21,6 +21,9 @@
       <p class="lead">Semester: {{ course.semester }}</p>
       <p class="lead">Type of course: {{ course.formOfCourse }}</p>
       <p class="lead">Rating: {{ course.grade }}</p>
+      <p class="lead">Max Attendees: {{ course.max }}</p>
+      <p class="lead">Current Attendees: {{ course.attendees }}</p>
+      <p class="lead">Free places: {{ course.max - course.attendees }}</p>
     </div>
     <div class="col-4">
       <p class="lead">Teachers:</p>

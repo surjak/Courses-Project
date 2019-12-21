@@ -34,7 +34,10 @@ export class UserService {
       }
     });
     if (flag) {
-      this.user.courses.push(this.courseService.getCourse(id));
+      const course = this.courseService.getCourse(id);
+      if (course.attendees < course.max) {
+        this.user.courses.push(course);
+      }
     }
     return this.http
       .post("http://localhost:8080/courses/addCourseToUser", {

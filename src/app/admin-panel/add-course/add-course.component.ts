@@ -25,7 +25,8 @@ export class AddCourseComponent implements OnInit {
   constructor(
     private teacherService: TeachersService,
     private courseService: CourseService,
-    private route: Router
+    private route: Router,
+    private actRoute: ActivatedRoute
   ) {}
 
   private initForm() {
@@ -94,6 +95,7 @@ export class AddCourseComponent implements OnInit {
       );
   }
   onCancel() {
+    this.route.navigate(["../"], { relativeTo: this.actRoute });
     console.log("cencel");
   }
   addTeacher(e, id: string) {

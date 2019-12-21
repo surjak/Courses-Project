@@ -132,6 +132,7 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
   }
 
   onCancel() {
+    this.router.navigate(["../"], { relativeTo: this.route });
     console.log("cencel");
   }
 

@@ -161,4 +161,13 @@ export class CourseService {
     });
     this.coursesChanged.next(this.courses.slice());
   }
+
+  incrementAttendees(id) {
+    this.courses.map(course => {
+      if (course._id == id) {
+        course.attendees = +course.attendees + 1;
+      }
+    });
+    this.coursesChanged.next(this.courses.slice());
+  }
 }
