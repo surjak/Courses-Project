@@ -202,3 +202,7 @@
 .rating > label:hover ~ input:checked ~ label {
   color: dodgerblue;
 }
+/*  */
+.toast {
+  opacity: 1 !important;
+}
