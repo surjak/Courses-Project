@@ -13,6 +13,8 @@ import { ITutor } from "src/app/models/itutor.model";
   styleUrls: ["./edit-course-item.component.css"]
 })
 export class EditCourseItemComponent implements OnInit, OnDestroy {
+  forms: any[];
+  formOfCourse: string;
   courseForm: FormGroup;
   courseTeachers = [];
   course: ICourse;
@@ -24,12 +26,15 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
     private teacherService: TeachersService,
     private router: Router
   ) {}
-
+  changeForm(e) {
+    this.formOfCourse = e.target.value;
+    console.log(this.formOfCourse);
+  }
   private initForm() {
     let name: string = this.course.name;
     let ects: Number = this.course.ects;
     let semester: Number = this.course.semester;
-    let formOfCourse: string = this.course.formOfCourse;
+    // let formOfCourse: string = this.course.formOfCourse;
     let imageUrl: string = this.course.imageUrl;
     let description: string = this.course.description;
     let max: Number = this.course.max;
@@ -38,7 +43,7 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
       name: new FormControl(name, Validators.required),
       ects: new FormControl(ects, Validators.required),
       semester: new FormControl(semester, Validators.required),
-      formOfCourse: new FormControl(formOfCourse, Validators.required),
+      // formOfCourse: new FormControl(formOfCourse, Validators.required),
       imageUrl: new FormControl(imageUrl, Validators.required),
       description: new FormControl(description, Validators.required),
       max: new FormControl(max, Validators.required)
@@ -48,7 +53,10 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.route.params.pipe(map(params => params["id"])).subscribe(id => {
       this.course = this.courseService.getCourse(id);
+      this.formOfCourse = this.course.formOfCourse;
     });
+    this.forms = [this.formOfCourse, "Lecture", "Exercises", "Project", "Lab"];
+    this.forms = [...new Set(this.forms)];
     this.course.tutors.forEach(t => {
       this.courseTeachers.push(t._id);
     });
@@ -80,7 +88,7 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
     let name: string = this.courseForm.value["name"];
     let ects: Number = this.courseForm.value["ects"];
     let semester: Number = this.courseForm.value["semester"];
-    let formOfCourse: string = this.courseForm.value["formOfCourse"];
+    // let formOfCourse: string = this.courseForm.value["formOfCourse"];
     let imageUrl: string = this.courseForm.value["imageUrl"];
     let description: string = this.courseForm.value["description"];
     let max: Number = this.courseForm.value["max"];
@@ -91,7 +99,7 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
         name,
         ects,
         semester,
-        formOfCourse,
+        this.formOfCourse,
         imageUrl,
         description,
         max,

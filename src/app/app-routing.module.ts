@@ -21,6 +21,7 @@ import { TeachersResolverService } from "./teacher-list/teachers-resolver.servic
 import { CourseResolverService } from "./course-list/course-resolver.service";
 import { UserResolverService } from "./user-resolver.service";
 import { OneCourseServiceResolver } from "./my-courses/onecourse-resolver.service";
+import { AdminGuardService } from "./auth/admin-guard.service";
 
 const routes: Routes = [
   {
@@ -73,7 +74,7 @@ const routes: Routes = [
   {
     path: "admin-panel",
     component: AdminPanelComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService, AdminGuardService],
     resolve: [TeachersResolverService, CourseResolverService],
     children: [
       { path: "add-course", component: AddCourseComponent },
