@@ -100,7 +100,9 @@ export class CourseService {
             max: max,
             name: name,
             semester: semester,
-            tutors: teacherList
+            tutors: teacherList,
+            attendees: 0,
+            comments: []
           };
           console.log(course);
 

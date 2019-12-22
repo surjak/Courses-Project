@@ -33,6 +33,9 @@ export class UserService {
         flag = false;
       }
     });
+    if (this.user.courses.length == 0) {
+      this.fetchCourses().subscribe(res => console.log(res));
+    }
     if (flag) {
       const course = this.courseService.getCourse(id);
       if (course.attendees < course.max) {

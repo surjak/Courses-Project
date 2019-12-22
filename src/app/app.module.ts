@@ -34,7 +34,7 @@ import { MaxEcts } from "./shared/maxEcts.pipe";
 import { Ng5SliderModule } from "ng5-slider";
 import { MaxRate } from "./shared/maxRate.pipe";
 import { MaxSemesterPipe } from "./shared/maxSemester.pipe";
-
+import { NgxPaginationModule } from "ngx-pagination";
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,7 +79,8 @@ import { MaxSemesterPipe } from "./shared/maxSemester.pipe";
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+    NgxPaginationModule
   ],
   providers: [
     {

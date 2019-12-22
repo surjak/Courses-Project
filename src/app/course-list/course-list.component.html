@@ -64,10 +64,19 @@
           | maxRate: highValue2
           | semester: value3
           | maxSemester: highValue3
+          | paginate: { itemsPerPage: 4, currentPage: p }
       "
       [id]="course._id"
       [imageUrl]="course.imageUrl"
       [name]="course.name"
     ></app-course>
+  </div>
+  <div class="row">
+    <div class="col-6 offset-3 text-center mt-4">
+      <pagination-controls
+        (pageChange)="p = $event"
+        class="myPagination"
+      ></pagination-controls>
+    </div>
   </div>
 </div>
