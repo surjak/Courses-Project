@@ -5,7 +5,6 @@ import { CourseService } from "src/app/course-list/course.service";
 import { map } from "rxjs/operators";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { TeachersService } from "src/app/teacher-list/teachers.service";
-import { ITutor } from "src/app/models/itutor.model";
 
 @Component({
   selector: "app-edit-course-item",
@@ -44,18 +43,14 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
   }
   private initForm() {
     let name: string = this.course.name;
-    // let ects: Number = this.course.ects;
-    // let semester: Number = this.course.semester;
-    // let formOfCourse: string = this.course.formOfCourse;
+
     let imageUrl: string = this.course.imageUrl;
     let description: string = this.course.description;
     let max: Number = this.course.max;
 
     this.courseForm = new FormGroup({
       name: new FormControl(name, Validators.required),
-      // ects: new FormControl(ects, Validators.required),
-      // semester: new FormControl(semester, Validators.required),
-      // formOfCourse: new FormControl(formOfCourse, Validators.required),
+
       imageUrl: new FormControl(imageUrl, Validators.required),
       description: new FormControl(description, Validators.required),
       max: new FormControl(max, Validators.required)
@@ -102,9 +97,6 @@ export class EditCourseItemComponent implements OnInit, OnDestroy {
   onSubmit() {
     let id: string = this.course._id;
     let name: string = this.courseForm.value["name"];
-    // let ects: Number = this.courseForm.value["ects"];
-    // let semester: Number = this.courseForm.value["semester"];
-    // let formOfCourse: string = this.courseForm.value["formOfCourse"];
     let imageUrl: string = this.courseForm.value["imageUrl"];
     let description: string = this.courseForm.value["description"];
     let max: Number = this.courseForm.value["max"];

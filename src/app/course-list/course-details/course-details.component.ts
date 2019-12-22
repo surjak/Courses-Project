@@ -35,11 +35,4 @@ export class CourseDetailsComponent implements OnInit {
       comment: new FormControl(comment, Validators.required)
     });
   }
-
-  // onSubmit() {
-  //   let comment: string = this.commentForm.value["comment"];
-  //   this.course.comments.push({ email: this.user.email, comment: comment });
-  //   console.log(comment);
-  //   this.commentForm.reset();
-  // }
 }

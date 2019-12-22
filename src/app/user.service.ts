@@ -10,11 +10,11 @@ import { ICourse } from "./models/icourse.model";
 })
 export class UserService {
   user: IUser = {
-    _id: "0",
-    _token: "ala123",
-    admin: true,
-    tutor: false,
-    email: "aaa@12.pl",
+    _id: null,
+    _token: null,
+    admin: null,
+    tutor: null,
+    email: null,
     courses: []
   };
   constructor(private courseService: CourseService, private http: HttpClient) {}

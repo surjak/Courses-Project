@@ -31,18 +31,12 @@ export class AddCourseComponent implements OnInit {
 
   private initForm() {
     let name: string;
-    // let ects: Number;
-    // let semester: Number;
-    // let formOfCourse: string;
     let imageUrl: string;
     let description: string;
     let max: Number;
 
     this.courseForm = new FormGroup({
       name: new FormControl(name, Validators.required),
-      // ects: new FormControl(ects, Validators.required),
-      // semester: new FormControl(semester, Validators.required),
-      // formOfCourse: new FormControl(formOfCourse, Validators.required),
       imageUrl: new FormControl(imageUrl, Validators.required),
       description: new FormControl(description, Validators.required),
       max: new FormControl(max, Validators.required)
@@ -67,8 +61,6 @@ export class AddCourseComponent implements OnInit {
   }
   onSubmit() {
     let name: string = this.courseForm.value["name"];
-    // let ects: Number = this.courseForm.value["ects"];
-    // let semester: Number = this.courseForm.value["semester"];
 
     let imageUrl: string = this.courseForm.value["imageUrl"];
     let description: string = this.courseForm.value["description"];

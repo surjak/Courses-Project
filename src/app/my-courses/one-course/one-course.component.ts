@@ -20,10 +20,7 @@ export class OneCourseComponent implements OnInit {
   commentForm: FormGroup;
   user: IUser;
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
     private courseService: CourseService,
-    private userService: UserService,
     private oneCourseService: OnecourseService,
     private authService: AuthService
   ) {}
