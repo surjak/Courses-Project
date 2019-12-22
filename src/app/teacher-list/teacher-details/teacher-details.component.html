@@ -36,4 +36,103 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-4 mt-5">
+      <p class="lead">Learning Skills</p>
+      <div class="scrollbar scrollbar-primary mt-3">
+        <div class="force-overflow">
+          <!--  -->
+          <div
+            class="toast"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+            *ngFor="let comm of teacher.learningSkills"
+          >
+            <div class="toast-header">
+              <strong class="mr-auto">{{ comm.email }}</strong>
+            </div>
+            <div class="toast-body">
+              {{ comm.comment }}
+            </div>
+          </div>
+          <!--  -->
+        </div>
+      </div>
+    </div>
+    <div class="col-4 mt-5">
+      <p class="lead">Soft Skills</p>
+      <div class="scrollbar scrollbar-primary mt-3">
+        <div class="force-overflow">
+          <!--  -->
+          <div
+            class="toast"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+            *ngFor="let comm of teacher.softSkills"
+          >
+            <div class="toast-header">
+              <strong class="mr-auto">{{ comm.email }}</strong>
+            </div>
+            <div class="toast-body">
+              {{ comm.comment }}
+            </div>
+          </div>
+          <!--  -->
+        </div>
+      </div>
+    </div>
+    <div class="col-4 mt-5">
+      <p class="lead">Personality</p>
+      <div class="scrollbar scrollbar-primary mt-3">
+        <div class="force-overflow">
+          <!--  -->
+          <div
+            class="toast"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+            *ngFor="let comm of teacher.personalSkills"
+          >
+            <div class="toast-header">
+              <strong class="mr-auto">{{ comm.email }}</strong>
+            </div>
+            <div class="toast-body">
+              {{ comm.comment }}
+            </div>
+          </div>
+          <!--  -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 mt-5">
+      <h1 class="lead ">Add comment</h1>
+      <select class="custom-select my-2" (change)="changeType($event)">
+        <option *ngFor="let type1 of types" [ngValue]="type1">{{
+          type1
+        }}</option>
+      </select>
+      <form [formGroup]="commentForm" class="mb-4" (ngSubmit)="onSubmit()">
+        <div class="form-group ">
+          <textarea
+            type="text"
+            id="com"
+            formControlName="comment"
+            class="form-control"
+            rows="4"
+          ></textarea>
+        </div>
+        <button
+          class="btn btn-warning mb-4 float-right px-5"
+          type="submit"
+          [disabled]="!commentForm.valid"
+        >
+          ADD
+        </button>
+      </form>
+    </div>
+  </div>
 </div>

@@ -129,4 +129,12 @@ export class TeachersService {
         })
       );
   }
+
+  addComment(id, comment, type) {
+    return this.http.post("http://localhost:8080/teachers/addComment", {
+      type: type,
+      comment: comment,
+      teacherId: id
+    });
+  }
 }

@@ -8,7 +8,7 @@ export interface ITutor {
   telephone: string;
   mail: string;
   personalPage: string;
-  learningSkills?: IComment[];
-  personalSkills?: IComment[];
-  softSkills?: IComment[];
+  learningSkills?: any[];
+  personalSkills?: any[];
+  softSkills?: any[];
 }
