@@ -170,4 +170,16 @@ export class CourseService {
     });
     this.coursesChanged.next(this.courses.slice());
   }
+  addComment(id: String, email: String, comment: String, userId: String) {
+    this.courses.map(course => {
+      if (course._id == id) {
+        course.comments.push({
+          userId: userId,
+          email: email,
+          comment: comment
+        });
+      }
+    });
+    this.coursesChanged.next(this.courses.slice());
+  }
 }

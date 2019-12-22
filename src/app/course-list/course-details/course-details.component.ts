@@ -36,10 +36,10 @@ export class CourseDetailsComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    let comment: string = this.commentForm.value["comment"];
-    this.course.comments.push({ userId: this.user.email, comment: comment });
-    console.log(comment);
-    this.commentForm.reset();
-  }
+  // onSubmit() {
+  //   let comment: string = this.commentForm.value["comment"];
+  //   this.course.comments.push({ email: this.user.email, comment: comment });
+  //   console.log(comment);
+  //   this.commentForm.reset();
+  // }
 }

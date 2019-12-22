@@ -97,4 +97,10 @@ export class OnecourseService {
         })
       );
   }
+  addComment(comment: string, courseId: string) {
+    return this.http.post("http://localhost:8080/courses/addComment", {
+      comment: comment,
+      courseId: courseId
+    });
+  }
 }

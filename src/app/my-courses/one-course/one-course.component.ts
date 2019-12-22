@@ -46,8 +46,24 @@ export class OneCourseComponent implements OnInit {
 
   onSubmit() {
     let comment: string = this.commentForm.value["comment"];
-    this.course.comments.push({ userId: this.user.email, comment: comment });
-    console.log(comment);
-    this.commentForm.reset();
+    this.oneCourseService.addComment(comment, this.course._id).subscribe(
+      res => {
+        this.course.comments.push({
+          email: this.user.email,
+          comment: comment
+        });
+        console.log(comment);
+        this.commentForm.reset();
+        this.courseService.addComment(
+          this.course._id,
+          this.user.email,
+          comment,
+          this.user._id
+        );
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }
