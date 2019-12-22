@@ -27,9 +27,13 @@ import { SignupComponent } from "./auth/signup/signup.component";
 import { LoginComponent } from "./auth/login/login.component";
 import { SignupAdminComponent } from "./auth/signup-admin/signup-admin.component";
 import { AuthInterceptorService } from "./auth/auth-interceptor.service";
-import { EctsPipe } from './shared/ects.pipe';
-import { RatePipe } from './shared/rate.pipe';
-import { SemesterPipe } from './shared/semester.pipe';
+import { EctsPipe } from "./shared/ects.pipe";
+import { RatePipe } from "./shared/rate.pipe";
+import { SemesterPipe } from "./shared/semester.pipe";
+import { MaxEcts } from "./shared/maxEcts.pipe";
+import { Ng5SliderModule } from "ng5-slider";
+import { MaxRate } from "./shared/maxRate.pipe";
+import { MaxSemesterPipe } from "./shared/maxSemester.pipe";
 
 @NgModule({
   declarations: [
@@ -64,15 +68,18 @@ import { SemesterPipe } from './shared/semester.pipe';
     EctsPipe,
 
     RatePipe,
-
-    SemesterPipe
+    MaxEcts,
+    SemesterPipe,
+    MaxRate,
+    MaxSemesterPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Ng5SliderModule
   ],
   providers: [
     {

@@ -1,32 +1,52 @@
 <div class="container mt-5">
   <div class="row ">
-    <div class="col-3  mt-4">
+    <div class="col-4 offset-4 mt-4">
       <input
         [(ngModel)]="searchText"
         placeholder="Search for courses"
         class="form-control"
       />
     </div>
-    <div class="col-3  mt-4">
-      <input
+  </div>
+  <div class="row">
+    <div class="col-4  mt-4">
+      <!-- <input
         [(ngModel)]="searchECTS"
         placeholder="Filter by ECTS"
         class="form-control"
-      />
+      /> -->
+      <span class="lead">ECTS</span>
+      <ng5-slider
+        [(value)]="value"
+        [(highValue)]="highValue"
+        [options]="options"
+      ></ng5-slider>
     </div>
-    <div class="col-3  mt-4">
-      <input
+    <div class="col-4  mt-4">
+      <!-- <input
         [(ngModel)]="semesterFilter"
         placeholder="Filter by Semester"
         class="form-control"
-      />
+      /> -->
+      <span class="lead">Rate</span>
+      <ng5-slider
+        [(value)]="value2"
+        [(highValue)]="highValue2"
+        [options]="options2"
+      ></ng5-slider>
     </div>
-    <div class="col-3  mt-4">
-      <input
+    <div class="col-4  mt-4">
+      <!-- <input
         [(ngModel)]="gradeFilter"
         placeholder="Filter by grade"
         class="form-control"
-      />
+      /> -->
+      <span class="lead">Semester</span>
+      <ng5-slider
+        [(value)]="value3"
+        [(highValue)]="highValue3"
+        [options]="options3"
+      ></ng5-slider>
     </div>
   </div>
 </div>
@@ -38,9 +58,12 @@
       *ngFor="
         let course of courses
           | filter: searchText
-          | ects: searchECTS
-          | rate: gradeFilter
-          | semester: semesterFilter
+          | ects: value
+          | maxEcts: highValue
+          | rate: value2
+          | maxRate: highValue2
+          | semester: value3
+          | maxSemester: highValue3
       "
       [id]="course._id"
       [imageUrl]="course.imageUrl"

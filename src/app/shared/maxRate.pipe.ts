@@ -2,15 +2,15 @@ import { Pipe, PipeTransform } from "@angular/core";
 import { ICourse } from "../models/icourse.model";
 
 @Pipe({
-  name: "rate"
+  name: "maxRate"
 })
-export class RatePipe implements PipeTransform {
+export class MaxRate implements PipeTransform {
   transform(items: ICourse[], rate: Number): ICourse[] {
     if (!items) return [];
     if (!rate) return items;
 
     return items.filter(it => {
-      return it.grade >= rate;
+      return it.grade <= rate;
     });
   }
 }

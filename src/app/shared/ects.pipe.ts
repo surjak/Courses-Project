@@ -10,7 +10,7 @@ export class EctsPipe implements PipeTransform {
     if (!ects) return items;
 
     return items.filter(it => {
-      return it.ects == ects;
+      return it.ects >= ects;
     });
   }
 }
